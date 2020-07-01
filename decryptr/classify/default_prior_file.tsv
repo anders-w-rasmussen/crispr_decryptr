@@ -1,0 +1,3 @@
+state	e_mu_0_sigmas	e_tau_0_per_kb	NB_r	NB_succ_per_kb	NB_fail_per_kb
+background	0	10000	5	1	200
+enhancer	1	500	3	1	200
