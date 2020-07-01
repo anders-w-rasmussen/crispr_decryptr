@@ -33,7 +33,6 @@ Second, the *predict* command constructs a convolution matrix from intended targ
 
 Thirdly, the *classify* command takes the results of the first two commands to map the locations of functional elements on the region of interest using a Gaussian process deconvolution and Hidden semi-Markov Models. <br />
 
-*Figure 1 from our publication CRISPR-Decryptr reveals  <br />  cis-regulatory elements from noncoding pertubation screens.* <br />
 
 
 
