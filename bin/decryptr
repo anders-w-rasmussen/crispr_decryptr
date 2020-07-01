@@ -1,4 +1,4 @@
-#!/Users/arasmussen/opt/anaconda3/bin/python
+#!/usr/bin/env python
 
 from decryptr.mcmc_glm.crispr_decryptr_stan import analyze
 from decryptr.conv_mat_construct.predict_fns import cmat_run
