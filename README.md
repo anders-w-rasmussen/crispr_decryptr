@@ -23,19 +23,19 @@ pip install git+https://github.com/anders-w-rasmussen/crispr_decryptr
 
 # The Method 
 
-<img align="left" src=/readme_files/figure_1.png alt="drawing" width="550"/>
+<img align="left" src=/readme_files/figure_1.png alt="drawing" width="500"/>
 
-<p align="right">
 There are three parts to the **CRISPR Decryptr** method:
 
 First, the *infer* command takes gRNA counts as well as information about experimental design and returns guide-specific pertubation effects using a Markov Chain Monte Carlo inference procedure. 
 
 Second, the *predict* command constructs a convolution matrix from intended targets. This command can align spacer sequences to a reference genome, or build the matrix from intended gRNA target locations. The convolution matrix serves as a linear map of guide-specific effect to base-specific effect.
 
-Thirdly, the *classify* command takes the results of the first two commands to map the locations of functional elements on the region of interest using a Gaussian process deconvolution and Hidden semi-Markov Models. </p> <br />
+Thirdly, the *classify* command takes the results of the first two commands to map the locations of functional elements on the region of interest using a Gaussian process deconvolution and Hidden semi-Markov Models. 
 
+*Figure 1 from our publication CRISPR-Decryptr reveals  <br />  cis-regulatory elements from noncoding pertubation screens.*
 
-
+<br>
 
 
 # Get Started
