@@ -170,7 +170,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         print("signal_dev: " + str(alpha_opt ** 2) + "     length_scale: " + str(
             rho_opt) + "     process_noise (std. dev): " + str(sn_opt ** 2))
 
-        mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal - convolved_mean], [x],
+        mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal], [x],
                                                            [target_locs], alpha_opt,
                                                            rho_opt, sn_opt,
                                                            [1 / prec_vec], full_pred=False, K_mod=None)
