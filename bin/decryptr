@@ -151,7 +151,7 @@ class decryptr(object):
                             default='False', help='set to true if enhancers have negative effect (only if using default hyperparameters)')
 
         args = parser.parse_args(sys.argv[2:])
-        iter_procedure(args.effect_file, args.targets, args.conv_mat, args.logfilename,
+        classify_procedure(args.effect_file, args.targets, args.conv_mat, args.logfilename,
                        args.priors, args.out_dir, args.alpha, args.rho, args.sigma, args.bed_threshold, args.flip_sign)
 
 if __name__ == '__main__':
