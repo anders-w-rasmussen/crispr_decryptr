@@ -11,7 +11,7 @@ else:
     print("C++ forward-backward algorithm not found at: " + str(curpath) + "/libfwdbwdcpp.so")
     print("Installing and compiling the Forward-Backward Algorithm")
 
-    os.system('wget --timestamping --show-progress --directory-prefix=' + curpath + ' https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.zip')
+    os.system('wget --timestamping -nv --directory-prefix=' + curpath + ' https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.zip')
     os.system('unzip ' + curpath + '/eigen-3.3.7.zip' + ' -d ' + curpath)
     os.system('g++ ' + curpath + '/libfwdbwd.cpp -o ' + curpath + '/libfwdbwdcpp.so --shared -fPIC -DNDEBUG -O3 -I' + curpath + '/eigen-3.3.7')
     if os.path.exists(curpath + "/libfwdbwdcpp.so"):
