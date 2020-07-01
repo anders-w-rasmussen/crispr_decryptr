@@ -136,18 +136,16 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         tmat_prior = np.ones((num_states, num_states)) - np.identity(num_states)
         hsmm_model = model(pi_prior, tmat_prior, state_list)
 
-        if reversion_factor != 0.0:
-            print("decryptr: training Hidden semi-Markov Model on convolved effect")
 
-            hsmm_model.train(obs_list, 0, 5)
+        hsmm_model.train(obs_list, 0, 5)
 
-            logging.info("Trained the model")
+        logging.info("Trained the model")
 
-            spinner = Halo(text='decryptr: calculating marginal probabilities of latent states', spinner='dots',
-                           color='white', placement='right')
-            spinner.start()
+        spinner = Halo(text='decryptr: calculating marginal probabilities of latent states', spinner='dots',
+                      color='white', placement='right')
+        spinner.start()
 
-            marg_probs, state_change_prob = hsmm_model.give_gammas(obs_list, 0, state_change=True)
+        marg_probs, state_change_prob = hsmm_model.give_gammas(obs_list, 0, state_change=True)
 
         max_distance = 50
         gp_deconvolution = gp_utils.GP_Deconvolution(maximum_distance=max_distance)
@@ -268,12 +266,10 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                 for b in range(0, np.size(outbases, axis=0) - 1):
                     writer.writerow([str(int(outbases[b])), str(out_marg[b])])
 
-            # print("decryptr: wrote marginal probability .wig file for state " + str(names[u]) + " and effect " + str(effect_names[j]))
 
             idxs = np.argwhere(out_marg > bed_threshold).flatten()
 
             if np.size(idxs) == 0:
-                # print("decryptr: no peaks found for state " + str(names[u]) + " and effect " + str(effect_names[j]))
                 continue
 
             num_idxs = np.size(idxs)
