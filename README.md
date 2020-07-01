@@ -23,7 +23,7 @@ pip install git+https://github.com/anders-w-rasmussen/crispr_decryptr
 
 # The Method 
 
-<img align="left" src=/readme_files/figure_1.png alt="drawing" width="400"/>
+<img align="left" src=/readme_files/figure_1.png alt="drawing" width="550"/>
 
 There are three parts to the **CRISPR Decryptr** method:
 
