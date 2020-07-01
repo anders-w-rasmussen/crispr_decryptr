@@ -9,7 +9,7 @@ setuptools.setup(
     description="A statistical method for the analysis of CRISPR noncoding screens",
     url="https://github.com/anders-w-rasmussen/crispr_decryptr",
     packages=['decryptr/classify', 'decryptr/conv_mat_construct', 'decryptr/mcmc_glm'],
-    package_data={"": ["*.tsv", "*.cpp", "*.cpp", "*.h5", "*.hpp", "*.stan", "bigWigToWig"],
+    package_data={"": ["*.tsv", "*.cpp", "*.h5", "*.stan", "bigWigToWig"],
     },
 classifiers=[
         "Programming Language :: Python :: 3",
