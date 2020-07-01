@@ -31,9 +31,9 @@ First, the *infer* command takes gRNA counts as well as information about experi
 
 Second, the *predict* command constructs a convolution matrix from intended targets. This command can align spacer sequences to a reference genome, or build the matrix from intended gRNA target locations. The convolution matrix serves as a linear map of guide-specific effect to base-specific effect.
 
-Thirdly, the *classify* command takes the results of the first two commands to map the locations of functional elements on the region of interest using a Gaussian process deconvolution and Hidden semi-Markov Models. 
+Thirdly, the *classify* command takes the results of the first two commands to map the locations of functional elements on the region of interest using a Gaussian process deconvolution and Hidden semi-Markov Models. <br />
 
-*Figure 1 from our publication CRISPR-Decryptr reveals  <br />  cis-regulatory elements from noncoding pertubation screens.*
+*Figure 1 from our publication CRISPR-Decryptr reveals  <br />  cis-regulatory elements from noncoding pertubation screens.* <br />
 
 
 
