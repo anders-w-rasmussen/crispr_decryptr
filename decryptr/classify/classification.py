@@ -167,7 +167,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
             state_list.append(states.Negative_Binomial('state_' + str(s), prior_Rs[s], pseudo_dur, emit))
 
         pi_prior = np.ones(num_states)
-        pi_prior[back_idx] = 100
+        pi_prior[back_idx] = 10
         tmat_prior = np.ones((num_states, num_states)) - np.identity(num_states)
         hsmm_model = model(pi_prior, tmat_prior, state_list)
 
