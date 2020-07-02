@@ -67,7 +67,7 @@ transformed parameters {
 }
 
 model {
-  to_vector(beta) ~ normal(0,3);
+  to_vector(beta) ~ normal(0,2);
 
   to_vector(lambda_raw) ~ normal(0,1);
 
@@ -75,7 +75,7 @@ model {
     to_vector(gamma_rep_raw[i]) ~ normal(0,1);
   }
 
-  s2 ~ inv_gamma(4,0.5);
+  s2 ~ inv_gamma(3,1);
 
   for (i in 1:N_samples) {
     counts[i] ~ multinomial(p[i]');
