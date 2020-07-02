@@ -147,7 +147,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         deconv_mean = np.zeros(T)
         deconv_mean[x_vals] += mean_f
 
-        deconv_var = np.ones(T) * np.mean(var_f)
+        deconv_var = np.ones(T) #* np.mean(var_f)
         deconv_var[x_vals] = var_f
 
         signal_sigma = np.std(deconv_mean[x_vals])
