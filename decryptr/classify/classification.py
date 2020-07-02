@@ -185,7 +185,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
 
         signal_sigma = np.std(deconv_mean[x_vals])
 
-        logging.info("Finished deconvolving effect for iteration " + str(i))
+        logging.info("Finished deconvolving effect")
 
         # HsMM
 
