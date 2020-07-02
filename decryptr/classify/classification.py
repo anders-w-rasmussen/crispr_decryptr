@@ -107,7 +107,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         print("decryptr: analyzing the effect labeled " + str(effect_names[j]))
         logging.info("Beginning examination of effect" + str(effect_names[j]))
 
-        convolved_signal = effect_mus[j] #- np.mean(effect_mus[j])
+        convolved_signal = effect_mus[j] - np.mean(effect_mus[j])
         prec_vec = effect_precisions[j]
 
         signal_sigma = np.std(convolved_signal)
@@ -160,7 +160,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         obs_list.append(deconv_mean)
 
         for s in range(0, num_states):
-            emit = [emits.normal_dist_known_precision_vector(prior_sigma_mus[s] * signal_sigma,
+            emit = [emits.normal_dist_known_precision_vector(np.mean(deconv_mean) + prior_sigma_mus[s] * signal_sigma,
                                                              prior_taus[s], 1 / deconv_var)]
             pseudo_dur = np.array([prior_success[s], prior_failures[s]])
             state_list.append(states.Negative_Binomial('state_' + str(s), prior_Rs[s], pseudo_dur, emit))
