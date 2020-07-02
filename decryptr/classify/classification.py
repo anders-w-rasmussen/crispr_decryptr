@@ -134,8 +134,8 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
             sn_opt = sn
 
         print("decryptr: Gaussian process parameters")
-        print("signal_dev: " + str(alpha_opt ** 2) + "     length_scale: " + str(
-            rho_opt) + "     process_noise (std. dev): " + str(sn_opt ** 2))
+        print("signal_dev: " + str(round(alpha_opt ** 2, 2))) + "     length_scale: " + str(
+            round(rho_opt, 2)) + "     process_noise (std. dev): " + str(round(sn_opt ** 2, 2)))
 
         mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal], [x],
                                                            [target_locs], alpha_opt,
