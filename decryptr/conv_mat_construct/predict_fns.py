@@ -229,7 +229,6 @@ def cmat_run(targets_file, cas9_alg, filter_dev, filter_window, spacers, species
 
                 per_rem_targs = (1.0 - np.size(col_idxs_good)/np.size(original_cmat, axis=1)) * 100
 
-                print("decryptr: " + str(per_rem)[0:4] + "% of the region and " + str(per_rem_targs)[0:4] + "% of guides were not sufficiently specific")
                 print("decryptr: adjusted the convolution matrix")
 
 
