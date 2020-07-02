@@ -107,7 +107,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         print("decryptr: analyzing the effect labeled " + str(effect_names[j]))
         logging.info("Beginning examination of effect" + str(effect_names[j]))
 
-        convolved_signal = effect_mus[j] - np.median(effect_mus[j])
+        convolved_signal = effect_mus[j] #- np.median(effect_mus[j])
         prec_vec = effect_precisions[j]
 
         signal_sigma = np.std(convolved_signal)
