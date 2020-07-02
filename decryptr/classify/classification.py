@@ -173,7 +173,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal], [x],
                                                            [target_locs], alpha_opt,
                                                            rho_opt, sn_opt,
-                                                           [1 / prec_vec], full_pred=False, K_mod=None)
+                                                           [1 / prec_vec], full_pred=False)
 
         x_vals = np.asarray(x[np.argwhere(x_truncated[0] == True)].flatten(), dtype=int)
 
@@ -214,7 +214,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                        color='white', placement='right')
         spinner.start()
 
-        marg_probs, state_change_prob = hsmm_model.give_gammas(obs_list, 0, state_change=True)
+        marg_probs = hsmm_model.give_gammas(obs_list, 0, state_change=False)
 
         spinner.stop()
 
