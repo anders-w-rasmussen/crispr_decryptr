@@ -208,8 +208,6 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
 
         hsmm_model.train(obs_list, 0, 3)
 
-        logging.info("Trained HsMM of iteration " + str(i))
-
         spinner = Halo(text='decryptr: calculating marginal probabilities of latent states', spinner='dots',
                        color='white', placement='right')
         spinner.start()
