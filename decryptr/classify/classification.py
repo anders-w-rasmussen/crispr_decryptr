@@ -133,6 +133,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         else:
             sn_opt = sn
 
+        print("decryptr: Gaussian process parameters")
         print("signal_dev: " + str(alpha_opt ** 2) + "     length_scale: " + str(
             rho_opt) + "     process_noise (std. dev): " + str(sn_opt ** 2))
 
