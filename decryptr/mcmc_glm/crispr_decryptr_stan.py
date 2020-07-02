@@ -417,7 +417,6 @@ def run_stan(data_dict, stan_filename='crispr_decryptr.stan', output_prefix='sam
 
     print("decryptr: Beginning sampling")
     print("decryptr: " + str(n_batches * n_chains) + " processes")
-    print("decryptr: " + str(min(n_batches * n_chains, cpu_count())) + " cores will be utilized out of the " + str(cpu_count()) + " available.")
     print("decryptr: " + str(total) + " batch(es) to complete")
     print("PROGRESS:")
 
