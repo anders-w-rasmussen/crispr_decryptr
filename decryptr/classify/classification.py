@@ -112,40 +112,6 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
 
         signal_sigma = np.std(convolved_signal)
         missing_obs = np.ones(T) * np.nan
-        missing_obs[target_locs] = convolved_signal
-
-        prec_expand = np.ones(T) * np.nan
-        prec_expand[target_locs] = prec_vec
-
-        missing_obs[np.argwhere(np.sum(cmat, axis=0) == 0)] = np.nan
-        prec_expand[np.argwhere(np.sum(cmat, axis=0) == 0)] = np.nan
-
-        state_list = []
-        obs_list = []
-        obs_list.append(missing_obs)
-
-        for s in range(0, num_states):
-            emit = [
-                emits.normal_dist_known_precision_vector(np.mean(convolved_signal) + prior_sigma_mus[s] * signal_sigma,
-                                                         prior_taus[s], prec_expand)]
-            pseudo_dur = np.array([prior_success[s], prior_failures[s]])
-            state_list.append(states.Negative_Binomial('state_' + str(s), prior_Rs[s], pseudo_dur, emit))
-
-        pi_prior = np.ones(num_states)
-        pi_prior[back_idx] = 100
-        tmat_prior = np.ones((num_states, num_states)) - np.identity(num_states)
-        hsmm_model = model(pi_prior, tmat_prior, state_list)
-
-
-        hsmm_model.train(obs_list, 0, 5)
-
-        logging.info("Trained the model")
-
-        spinner = Halo(text='decryptr: calculating marginal probabilities of latent states', spinner='dots',
-                      color='white', placement='right')
-        spinner.start()
-
-        marg_probs, state_change_prob = hsmm_model.give_gammas(obs_list, 0, state_change=True)
 
         max_distance = 50
         gp_deconvolution = gp_utils.GP_Deconvolution(maximum_distance=max_distance)
@@ -212,8 +178,8 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                        color='white', placement='right')
         spinner.start()
 
-        marg_probs = hsmm_model.give_gammas(obs_list, 0, state_change=False)
-
+        marg_probs, state_change = hsmm_model.give_gammas(obs_list, 0, state_change=True)
+        
         spinner.stop()
 
         if out_dir != None:
@@ -263,7 +229,6 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                 outbases = x + np.min(target_locs_original) - buffer
                 for b in range(0, np.size(outbases, axis=0) - 1):
                     writer.writerow([str(int(outbases[b])), str(out_marg[b])])
-
 
             idxs = np.argwhere(out_marg > bed_threshold).flatten()
 
