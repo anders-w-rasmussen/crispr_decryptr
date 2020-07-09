@@ -149,10 +149,13 @@ class decryptr(object):
                             default=0.9, help='probability threshold for .bed files')
         parser.add_argument('--flip_enhancer', action='store', dest='flip_sign', type=str, required=False,
                             default='False', help='set to true if enhancers have negative effect (only if using default hyperparameters)')
+        parser.add_argument('--normalize', action='store', dest='norm', type=str, required=False, default=None, help='normalize incoming signal (standard score)')
+        parser.add_argument('--hampel_filter', action='store', dest='hampel', type=str, required=False, default=None, help='remove outliers with Hampel filter')
+        
 
         args = parser.parse_args(sys.argv[2:])
         classify_procedure(args.effect_file, args.targets, args.conv_mat, args.logfilename,
-                       args.priors, args.out_dir, args.alpha, args.rho, args.sigma, args.bed_threshold, args.flip_sign)
+                       args.priors, args.out_dir, args.alpha, args.rho, args.sigma, args.bed_threshold, args.flip_sign, args.norm, args.hampel)
 
 if __name__ == '__main__':
     decryptr()
