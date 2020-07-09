@@ -38,10 +38,6 @@ Thirdly, the *classify* command takes the results of the first two commands to m
 <br>
 
 
-# Get Started
-
-
-
 # Credits
 
 Co-First Authors on Paper: Anders Rasmussen, Tarmo Äijö  <br />
