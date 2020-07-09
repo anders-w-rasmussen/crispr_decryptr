@@ -10,7 +10,7 @@ from halo import Halo
 import os
 
 def classify_procedure(effect_file, target_file, convolution_matrix, logfilename, prior=None, out_dir=None, alpha=None, rho=None,
-                       sn=None, bed_threshold=0.8, flip_sign=None):
+                       sn=None, bed_threshold=0.8, flip_sign=None, norm=None, hampel_filter=None):
 
     logging.basicConfig(filename=logfilename, level=logging.DEBUG)
 
@@ -108,6 +108,18 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         logging.info("Beginning examination of effect" + str(effect_names[j]))
 
         convolved_signal = effect_mus[j]
+	
+        if norm in ['True', 'true']:
+            convolved_signal -= np.mean(convolved_signal)
+            convolved_signal /= np.std(convolved_signal)
+
+        if hampel_filter in ['True', 'true']:
+            for i in range(3, np.size(convolved_signal) - 3):
+                win_med = np.median(convolved_signal[i - 3: i + 4])
+                MAD = np.median(np.absolute(convolved_signal[i - 3: i + 4] - win_med))
+                if np.absolute(convolved_signal[i] - win_med)  > 3 * MAD:
+                    convolved_signal[i] = win_med
+
         prec_vec = effect_precisions[j]
 
         signal_sigma = np.std(convolved_signal)
@@ -124,7 +136,8 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
             alpha_opt = alpha
 
         if rho == None:
-            rho_opt = np.mean(np.diff(target_locs))  # 6
+            diff_arr = np.diff(target_locs)
+            rho_opt = np.mean(diff_arr[diff_arr < 300])
         else:
             rho_opt = rho
 
