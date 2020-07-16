@@ -47,13 +47,11 @@ Thirdly, the *classify* command takes the results of the first two commands to m
 
 # Getting Started 
 
-To get introduced to CRISPR-Decryptr, we can start by running the code on some simple simulated data. This will also introduce the formats of the input files for each step in the method. 
+To get introduced to CRISPR-Decryptr, we can start by running the code on some simple simulated data. You don't need any experience in programming languages, just a terminal window and optionally Excel to get your data prepared in some simple .tsv files. 
 
 Consider a theoretical screen for identifying regulatory elements that confer drug resistance. Our experimental design has two replicates and the following three conditions: an early condition, a control condition, and a treatment condition. 
 
 ### Files for Analysis
-
-Let's look at the files we need to create for analysis. 
 
 First, lets look at grna_counts.tsv. The first three rows of our raw gRNA count file will appear as follows:
 
@@ -94,6 +92,27 @@ To learn about the algorithm in detail, please read *section 2.2* of the supplem
 | treatment_rep2           | 2        |
 | control_rep2        | 2     | 
 | early_rep2         | 2        | 
+
+
+### Running CRISPR-Decryptr
+
+Now that our files are all set, let's run CRISPR-Decryptr! We will start with the infer command, which will infer guide-specific regulatory effects from gRNA counts. In a terminal window, navigate to the directory where the files are we can begin.
+
+To get an idea of what the infer command takes as arguments type:
+
+```bash
+decryptr infer -h
+```
+This will display the help message with all the arguments we will need! Let's use a relatively small batch size so this doesn't take too long. Type:
+
+```bash
+decryptr infer grna_counts.tsv design_matrix.tsv replicate_info.tsv --batch_size 100 --n_batches 4
+```
+CRISPR-Decryptr breaks apart the gRNA counts into batches. The smaller the batch size the faster the analysis will be, but the algorithm will lose accuracy. We reccomend keeping this at 100 at minimum. 
+
+
+
+
 
 
 
