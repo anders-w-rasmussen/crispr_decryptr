@@ -72,6 +72,7 @@ This file is just one column, it begins with the chromosome under consideration.
 There are two more files we need to tell CRISPR-Decryptr about your experimental design. The first, design_matrix.txt, will tell the algorithm which "effects" impact which conditions. This file appears as follows, with the first column containing the same sample names, and the first row containing our "effect" names.
 
 | | early | control | treatment | 
+|----------------||----------------||----------------||----------------|
 | treatment_rep1          | 1         | 1      | 1           | 
 | control_rep1           | 1         | 1       | 0           | 
 | early_rep1           | 1        | 0       | 0          | 
