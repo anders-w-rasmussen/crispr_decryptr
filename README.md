@@ -49,7 +49,11 @@ Thirdly, the *classify* command takes the results of the first two commands to m
 
 To get introduced to CRISPR-Decryptr, we can start by running the code on some simple simulated data. This will also introduce the formats of the input files for each step in the method. 
 
-Consider a theoretical screen for identifying regulatory elements that confer drug resistance. Our experimental design has two replicates and the following three conditions: an early condition, a control condition, and a treatment condition. Let's look at the files we need to create for analysis. 
+Consider a theoretical screen for identifying regulatory elements that confer drug resistance. Our experimental design has two replicates and the following three conditions: an early condition, a control condition, and a treatment condition. 
+
+##### Files for Analysis
+
+Let's look at the files we need to create for analysis. 
 
 First, lets look at grna_counts.tsv. The first three rows of our raw gRNA count file will appear as follows:
 
