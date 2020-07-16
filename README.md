@@ -51,7 +51,7 @@ To get introduced to CRISPR-Decryptr, we can start by running the code on some s
 
 Consider a theoretical screen for identifying regulatory elements that confer drug resistance. Our experimental design has two replicates and the following three conditions: an early condition, a control condition, and a treatment condition. 
 
-### Files for Analysis
+### Step 1: Organize Data for Analysis
 
 First, lets look at *grna_counts.tsv*. The first three rows of our raw gRNA count file will appear as follows:
 
@@ -94,7 +94,7 @@ To learn about the algorithm in detail, please read **section 2.2** of the suppl
 | early_rep2         | 2        | 
 
 
-### Running CRISPR-Decryptr
+### Step 2: Infer Guide-Specific Pertubation Effects (Infer)
 
 Now that our files are all set, let's run CRISPR-Decryptr! We will start with the *infer* command, which will infer guide-specific regulatory effects from gRNA counts. In a terminal window, navigate to the directory where the files are we can begin.
 
@@ -112,6 +112,8 @@ decryptr infer grna_counts.tsv design_matrix.tsv replicate_info.tsv --batch_size
 ```
 CRISPR-Decryptr breaks apart the gRNA counts into batches. Smaller batch sizes allows the analysis to run faster at the expense of accuracy in its results. We suggest keeping this argument above 100. When this part of the method is done running (should take on the order of tens of minutes) it will produce the file *posterior_outfile.tsv*. We've included this so you don't need to wait for the analysis to complete. 
 
+### Step 3: Create the Convolution Matrix (Predict)
+
 Now we can run the *predict* command, which will create a convolution matrix to map the guide-specific effects from *posterior_outfile.tsv* to a base-by-base effect. 
 
 ```bash
@@ -120,6 +122,7 @@ decryptr predict grna_targets.tsv False
 
 The second argument is False because we are not using the mutagenesis specific off-target scoring or repair outcome prediction (see **section 2.3**). This command will produce our convolution matrix *convolution_matrix.p*
 
+### Step 3: Deconvolve the Effects and Classify Regulatory Elements (Classify)
 
 
 
