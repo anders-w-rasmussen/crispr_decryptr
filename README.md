@@ -114,7 +114,7 @@ CRISPR-Decryptr breaks apart the gRNA counts into batches. Smaller batch sizes a
 
 ### Step 3: Create the Convolution Matrix (Predict)
 
-Now we can run the *predict* command, which will create a convolution matrix to map the guide-specific effects from *posterior_outfile.tsv* to a base-by-base effect. 
+Now we can run the *predict* command, which will create a convolution matrix which will be used in the next step to map the guide-specific effects from *posterior_outfile.tsv* to a base-by-base effect. 
 
 ```bash
 decryptr predict grna_targets.tsv False
@@ -122,9 +122,16 @@ decryptr predict grna_targets.tsv False
 
 The second argument is False because we are not using the mutagenesis specific off-target scoring or repair outcome prediction (see **section 2.3**). This command will produce our convolution matrix *convolution_matrix.p*
 
-### Step 3: Deconvolve the Effects and Classify Regulatory Elements (Classify)
+### Step 3: Classify Regulatory Elements (Classify)
+
+Finally, let's run the classify command to map the guide-specific effects from *posterior_outfile.tsv* to base-specific effects using the convolution matrix we just constructed. 
 
 
+```bash
+decryptr classify posterior_outfile.tsv grna_targets.tsv convolution_matrix.p
+```
+
+This will write folders containing the regulatory element calls and deconvolved effect tracks! We can visualize these in a genome viewer. It should look something like this. 
 
 
 
