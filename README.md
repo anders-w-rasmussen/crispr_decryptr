@@ -49,7 +49,9 @@ Thirdly, the *classify* command takes the results of the first two commands to m
 
 To get introduced to CRISPR-Decryptr, we can start by running the code on some simple simulated data. This will also introduce the formats of the input files for each step in the method. 
 
-Consider a theoretical screen for identifying regulatory elements that confer drug resistance. Our experimental design has two replicates and the following three conditions: an early condition, a control condition, and a treatment condition. The first three rows of our raw gRNA count file will appear as follows:
+Consider a theoretical screen for identifying regulatory elements that confer drug resistance. Our experimental design has two replicates and the following three conditions: an early condition, a control condition, and a treatment condition. Let's look at the files we need to create for analysis. 
+
+First, lets look at grna_counts.tsv. The first three rows of our raw gRNA count file will appear as follows:
 
 | treatment_rep1 | control_rep1 | early_rep1 | treatment_rep2 | control_rep2 | early_rep2 |
 |----------------|--------------|------------|----------------|--------------|------------|
@@ -57,7 +59,17 @@ Consider a theoretical screen for identifying regulatory elements that confer dr
 | 2382           | 1356         | 1227       | 2321           | 1378         | 1219       |
 | ...          | ...        | ...      | ...           | ...        | ...       |
 
-Each column represents a different sample. The first row contains sample names, and the remaining rows represent gRNA counts corresponding to the targets in the target file. 
+Each column represents a different sample. The first row contains sample names, and the remaining rows represent gRNA counts corresponding to the targets in the target file grna_targets.tsv
+
+| chr2 |
+|----------------|
+| 49068782          |
+| 49067819         |
+| ...          |
+
+This file is just one column, it begins with the chromosome under consideration. Each successive entry is genomic position of the gRNA target. In this instance, the first guide targeting chr2:49068782 is in the second row of the file, which corresponds to the second row in the gnra_counts.tsv file. 
+
+
 
 
 
