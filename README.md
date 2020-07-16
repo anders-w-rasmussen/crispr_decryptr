@@ -69,7 +69,15 @@ Each column represents a different sample. The first row contains sample names, 
 
 This file is just one column, it begins with the chromosome under consideration. Each successive entry is genomic position of the gRNA target. In this instance, the first guide targeting chr2:49068782 is in the second row of the file, which corresponds to the second row in the gnra_counts.tsv file. 
 
+There are two more files we need to tell CRISPR-Decryptr about your experimental design. The first, design_matrix.txt, will tell the algorithm which "effects" impact which conditions. This file appears as follows, with the first column containing the same sample names, and the first row containing our "effect" names.
 
+| | early | control | treatment | 
+| treatment_rep1          | 1         | 1      | 1           | 
+| control_rep1           | 1         | 1       | 0           | 
+| early_rep1           | 1        | 0       | 0          | 
+| treatment_rep2           | 1        | 1       | 1           | 
+| control_rep2        | 1       | 1      | 0           | 
+| early_rep2         | 1        | 0      | 0          | 
 
 
 
