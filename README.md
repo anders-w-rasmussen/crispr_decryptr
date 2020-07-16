@@ -131,7 +131,11 @@ Finally, let's run the classify command to map the guide-specific effects from *
 decryptr classify posterior_outfile.tsv grna_targets.tsv convolution_matrix.p
 ```
 
-This will write folders containing the regulatory element calls and deconvolved effect tracks! We can visualize these in a genome viewer. It should look something like this. 
+This will write folders containing the regulatory element calls and deconvolved effect tracks! 
+
+### Step 4: Visualize the Results
+
+We can visualize these in a genome viewer. It should look something like this. 
 
 
 
