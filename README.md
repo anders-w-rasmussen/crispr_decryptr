@@ -53,7 +53,7 @@ Consider a theoretical screen for identifying regulatory elements that confer dr
 
 ### Files for Analysis
 
-First, lets look at grna_counts.tsv. The first three rows of our raw gRNA count file will appear as follows:
+First, lets look at *grna_counts.tsv*. The first three rows of our raw gRNA count file will appear as follows:
 
 | treatment_rep1 | control_rep1 | early_rep1 | treatment_rep2 | control_rep2 | early_rep2 |
 |----------------|--------------|------------|----------------|--------------|------------|
@@ -61,7 +61,7 @@ First, lets look at grna_counts.tsv. The first three rows of our raw gRNA count 
 | 2382           | 1356         | 1227       | 2321           | 1378         | 1219       |
 | ...          | ...        | ...      | ...           | ...        | ...       |
 
-Each column represents a different sample. The first row contains sample names, and the remaining rows represent gRNA counts corresponding to the targets in the target file grna_targets.tsv
+Each column represents a different sample. The first row contains sample names, and the remaining rows represent gRNA counts corresponding to the targets in the target file *grna_targets.tsv*
 
 | chr2 |
 |----------------|
@@ -69,9 +69,9 @@ Each column represents a different sample. The first row contains sample names, 
 | 49067819         |
 | ...          |
 
-This file is just one column, it begins with the chromosome under consideration. Each successive entry is genomic position of the gRNA target. In this instance, the first guide targeting chr2:49068782 is in the second row of the file, which corresponds to the second row in the gnra_counts.tsv file. 
+This file is just one column, it begins with the chromosome under consideration. Each successive entry is genomic position of the gRNA target. In this instance, the first guide targeting chr2:49068782 is in the second row of the file, which corresponds to the second row in the *gnra_counts.tsv* file. 
 
-There are two more files we need to tell CRISPR-Decryptr about your experimental design. The first, design_matrix.txt, will tell the algorithm which "effects" impact which conditions. This file appears as follows, with the first column containing the same sample names, and the first row containing our "effect" names.
+There are two more files we need to tell CRISPR-Decryptr about your experimental design. The first, *design_matrix.txt*, will tell the algorithm which "effects" impact which conditions. This file appears as follows, with the first column containing the same sample names, and the first row containing our "effect" names.
 
 |  | early | control | treatment | 
 |----------------|----------------|----------------|----------------|
@@ -82,7 +82,7 @@ There are two more files we need to tell CRISPR-Decryptr about your experimental
 | control_rep2        | 1       | 1      | 0           | 
 | early_rep2         | 1        | 0      | 0          | 
 
-To learn about the algorithm in detail, please read *section 2.2* of the supplemental notes. In breif, the design matrix tells CRISPR-Decryptr which phenomena are impacting the gRNA counts in each condition. It is up to the user to specify a design matrix that best suits their analysis. Finally, we have a file containing the replicate information for each sample as follows: 
+To learn about the algorithm in detail, please read **section 2.2** of the supplemental notes. In breif, the design matrix tells CRISPR-Decryptr which phenomena are impacting the gRNA counts in each condition. It is up to the user to specify a design matrix that best suits their analysis. Finally, we have a file containing the replicate information for each sample as follows: 
 
 |  | replicate | 
 |----------------|----------------|
@@ -96,19 +96,33 @@ To learn about the algorithm in detail, please read *section 2.2* of the supplem
 
 ### Running CRISPR-Decryptr
 
-Now that our files are all set, let's run CRISPR-Decryptr! We will start with the infer command, which will infer guide-specific regulatory effects from gRNA counts. In a terminal window, navigate to the directory where the files are we can begin.
+Now that our files are all set, let's run CRISPR-Decryptr! We will start with the *infer* command, which will infer guide-specific regulatory effects from gRNA counts. In a terminal window, navigate to the directory where the files are we can begin.
 
 To get an idea of what the infer command takes as arguments type:
 
 ```bash
 decryptr infer -h
 ```
-This will display the help message with all the arguments we will need! Let's use a relatively small batch size so this doesn't take too long. Type:
+This will display the help message for the infer command. Take a look at **section 1** in the supplemental notes for additional information on each command and its arguments. You can aways type -h after any of the commands to see its help message. 
+
+Let's use a relatively small batch size so this doesn't take too long. Type:
 
 ```bash
 decryptr infer grna_counts.tsv design_matrix.tsv replicate_info.tsv --batch_size 100 --n_batches 4
 ```
-CRISPR-Decryptr breaks apart the gRNA counts into batches. The smaller the batch size the faster the analysis will be, but the algorithm will lose accuracy. We reccomend keeping this at 100 at minimum. 
+CRISPR-Decryptr breaks apart the gRNA counts into batches. Smaller batch sizes allows the analysis to run faster at the expense of accuracy in its results. We suggest keeping this argument above 100. When this part of the method is done running (should take on the order of tens of minutes) it will produce the file *posterior_outfile.tsv*. We've included this so you don't need to wait for the analysis to complete. 
+
+Now we can run the *predict* command, which will create a convolution matrix to map the guide-specific effects from *posterior_outfile.tsv* to a base-by-base effect. 
+
+```bash
+decryptr predict grna_targets.tsv False
+```
+
+The second argument is False because we are not using the mutagenesis specific off-target scoring or repair outcome prediction (see **section 2.3**). This command will produce our convolution matrix *convolution_matrix.p*
+
+
+
+
 
 
 
