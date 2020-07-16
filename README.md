@@ -55,6 +55,7 @@ Consider a theoretical screen for identifying regulatory elements that confer dr
 |----------------|--------------|------------|----------------|--------------|------------|
 | 1820           | 1231         | 1104       | 1923           | 1210         | 1166       |
 | 2382           | 1356         | 1227       | 2321           | 1378         | 1219       |
+| ...          | ...        | ...      | ...           | ...        | ...       |
 
 Each column represents a different sample. The first row contains sample names, and the remaining rows represent gRNA counts corresponding to the targets in the target file. 
 
