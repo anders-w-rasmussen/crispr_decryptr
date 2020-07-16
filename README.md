@@ -51,7 +51,7 @@ To get introduced to CRISPR-Decryptr, we can start by running the code on some s
 
 Consider a theoretical screen for identifying regulatory elements that confer drug resistance. Our experimental design has two replicates and the following three conditions: an early condition, a control condition, and a treatment condition. 
 
-##### Files for Analysis
+### Files for Analysis
 
 Let's look at the files we need to create for analysis. 
 
