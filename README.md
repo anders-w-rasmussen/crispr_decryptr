@@ -138,20 +138,15 @@ This will write folders containing the regulatory element calls and deconvolved 
 
 ### Step 4: Visualize the Results
 
-We can visualize these in a genome viewer. It should look something like this. 
+If we open the folders titled "common" and "treatment" we can find the deconvolved signal and enhancer calls. If we open these files in a genomic viewer it should look something like this!
 
 
-<p align="center">
+<p align="left">
 <img src=/readme_files/demo.png alt="drawing" width="550"/>
 </p>
 
 
-
-
-
-
-
-
+Now that you've walked through all the different commands in CRISPR-Decryptr, we invite you to read the first two sections of our paper's supplemental notes to get familiar with all the arguments and funtionality of the method before analyzing your CRISPR screens. 
 
 
 
