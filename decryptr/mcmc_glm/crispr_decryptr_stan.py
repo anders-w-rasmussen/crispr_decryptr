@@ -24,7 +24,7 @@ def analyze(count_filename, design_matrix_filename, replicate_information_filena
         count_filename = count_filename.split(".")[0] + '_filtered.tsv'
 
     logging.basicConfig(filename='decryptr_infer.log', level=logging.DEBUG)
-    logging.getLogger("cmdstanpy").setLevel(logging.INFO)
+    #logging.getLogger("cmdstanpy").setLevel(logging.INFO)
 
 
     data_dict = generate_stan_input_collapsed(count_filename, design_matrix_filename,
