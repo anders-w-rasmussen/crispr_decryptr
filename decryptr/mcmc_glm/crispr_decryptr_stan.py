@@ -398,7 +398,7 @@ def helper(data, crispr_decryptr_model, n_chains, n_samples, output_prefix, batc
     for filename in crispr_decryptr_fit.runset._csv_files:
             basename = os.path.basename(filename)
             shutil.move(filename,os.path.join('./','%s-%d-%s.csv'%(output_prefix,batch_idx,basename.split('-')[-2])))
-    logger.info('saved sample files: %s'%(', '.join(sample_filenames)))        
+    logging.info('saved sample files: %s'%(', '.join(sample_filenames)))        
             
   
 
