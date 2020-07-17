@@ -144,13 +144,13 @@ Now that you've walked through all the different commands in CRISPR-Decryptr, we
 
 # Troubleshooting
 
-First, make sure you have the latest version of CRISPR-Decryptr. You can do this with the following command:
+First, make sure you have the latest version of CRISPR-Decryptr. This should take care of dependencies. You can do this with the following command:
 
 ```bash
 pip install --upgrade git+https://git@github.com/anders-w-rasmussen/crispr_decryptr
 ```
 
-If may have ran the *infer* command and saw something like:
+You may have run the *infer* command and saw something like:
 *TypeError: sample() got an unexpected keyword argument* 
 
 We have encountered this when using older versions of cmdstanpy which had different arguments. Please ensure you have the latest version of CRISPR-Decryptr installed and type:
