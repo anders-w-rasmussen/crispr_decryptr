@@ -141,6 +141,10 @@ This will write folders containing the regulatory element calls and deconvolved 
 We can visualize these in a genome viewer. It should look something like this. 
 
 
+<p align="center">
+<img src=/readme_files/demo.png alt="drawing" width="550"/>
+</p>
+
 
 
 
