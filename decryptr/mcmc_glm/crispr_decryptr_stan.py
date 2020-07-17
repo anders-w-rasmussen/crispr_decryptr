@@ -384,7 +384,7 @@ def generate_stan_input_collapsed(data_filename, design_matrix_filename,
 
 def helper(data, crispr_decryptr_model, n_chains, n_samples, output_prefix, batch_idx):
     crispr_decryptr_model.compile()
-    crispr_decryptr_fit = crispr_decryptr_model.sample(data=data, chains=n_chains, warmup_iters=n_samples,
+    crispr_decryptr_fit = crispr_decryptr_model.sample(data=data, chains=n_chains,
                                                        iter_warmup=n_samples, iter_sampling=n_samples, save_warmup=False, show_progress=False)
 
     # save_csvfiles will fail if any of the target files exist, thus let's delete them
