@@ -79,7 +79,9 @@ There are two more files we need to tell CRISPR-Decryptr about your experimental
 | control_rep2        | 1       | 1      | 0           | 
 | early_rep2         | 1        | 0      | 0          | 
 
-To learn about the algorithm in detail, please read **section 2.2** of the supplemental notes. In breif, the design matrix tells CRISPR-Decryptr which phenomena are impacting the gRNA counts in each condition. It is up to the user to specify a design matrix that best suits their analysis. Finally, we have a file containing the replicate information for each sample as follows: 
+To learn about the algorithm in detail, please read **section 2.2** of the supplemental notes. In breif, the design matrix tells CRISPR-Decryptr which phenomena are impacting the gRNA counts in each condition. It is up to the user to specify a design matrix that best suits their analysis. 
+
+Finally, we have the file *replicate_info.tsv* containing the replicate information for each sample as follows: 
 
 |  | replicate | 
 |----------------|----------------|
