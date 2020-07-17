@@ -150,8 +150,8 @@ First, make sure you have the latest version of CRISPR-Decryptr. You can do this
 pip install --upgrade git+https://git@github.com/anders-w-rasmussen/crispr_decryptr
 ```
 
-If you ran the *infer* command and saw something like:
-*TypeError: sample() got an unexpected keyword argument 
+If may have ran the *infer* command and saw something like:
+*TypeError: sample() got an unexpected keyword argument* 
 
 We have encountered this when using older versions of cmdstanpy which had different arguments. Please ensure you have the latest version of CRISPR-Decryptr installed and type:
 
