@@ -1,0 +1,5 @@
+	t_zero	t_end
+Reads T0 (rep1)	1	0
+Reads Tend (rep1)	1	1
+Reads T0 (rep2)	1	0
+Reads Tend (rep2)	1	1

@@ -1,0 +1,7 @@
+	early	common	treatment
+treatment_rep1	1	1	1
+control_rep1	1	1	0
+early_rep1	1	0	0
+treatment_rep2	1	1	1
+control_rep2	1	1	0
+early_rep2	1	0	0

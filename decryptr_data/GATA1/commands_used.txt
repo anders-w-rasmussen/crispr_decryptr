@@ -1,0 +1,17 @@
+Commands used to analyze the GATA1 Gene Loci (CRISPRi, Fulco et al.)
+
+1. Inference of Effect Command:
+  
+decryptr infer grna_counts.txt design_matrix.txt rep_info.txt --targets grna_targets.txt  --species hg19 --n_chains 2 --n_batches 4 --n_samples 500 --batch_size 150
+
+This will produce filtered counts, targets, spacers and the posterior_outfile.tsv
+
+2. Construction of Convolution Matrix Command:
+
+decryptr predict grna_targets_filtered.tsv False --species hg19 --filter_dev 30 --filter_window 151
+
+This will produce convolution_matrix.p file
+
+3. Classify Command:
+
+decryptr classify posterior_outfile.tsv grna_targets_filtered.tsv convolution_matrix.p --flip_enhancer True --normalize True 

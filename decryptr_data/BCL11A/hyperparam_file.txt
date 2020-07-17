@@ -1,0 +1,4 @@
+state	e_mu	e_tau_0	NB_r	NB_succ	NB_fail
+background	0	1	2	1	500
+silencer	-2	1	2	1	40
+enhancer	2	1	2	1	40

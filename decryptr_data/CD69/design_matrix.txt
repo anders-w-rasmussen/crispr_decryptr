@@ -1,0 +1,11 @@
+	background	negqtive	low	medium	high
+CD69back_1.count	1	0	0	0	0
+CD69back_2.count	1	0	0	0	0
+CD69baseline_1.count	1	1	0	0	0
+CD69baseline_2.count	1	1	0	0	0
+CD69low_1.count	1	0	1	0	0
+CD69low_2.count	1	0	1	0	0
+CD69medium_1.count	1	0	0	1	0
+CD69medium_2.count	1	0	0	1	0
+CD69high_1.count	1	0	0	0	1
+CD69high2.count	1	0	0	0	1

@@ -1,0 +1,11 @@
+	replicate
+CD25back_1.count	1
+CD25back_2.count	2
+CD25neg_1.count	1
+CD25neg_2.count	2
+CD25lo_1.count	1
+CD25lo_2.count	2
+CD25mid_1.count	1
+CD25mid_2.count	2
+CD25hi_1.count	1
+CD25hi_2.count	2

@@ -1,0 +1,5 @@
+	replicate
+Reads T0 (rep1)	1
+Reads Tend (rep1)	1
+Reads T0 (rep2)	2
+Reads Tend (rep2)	2

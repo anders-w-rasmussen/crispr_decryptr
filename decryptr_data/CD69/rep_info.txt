@@ -1,0 +1,11 @@
+	replicate
+CD69back_1.count	1
+CD69back_2.count	2
+CD69baseline_1.count	1
+CD69baseline_2.count	2
+CD69low_1.count	1
+CD69low_2.count	2
+CD69medium_1.count	1
+CD69medium_2.count	2
+CD69high_1.count	1
+CD69high2.count	2

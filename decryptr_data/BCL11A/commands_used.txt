@@ -1,0 +1,20 @@
+CRISPR-Decryptr Commands to Analyze the BCL11A Dataset (Canver et al.)
+
+1. Inference of Effect Command:
+
+decryptr infer grna_counts.txt design_matrix.txt rep_info.txt --spacers grna_sequences.txt --targets grna_targets.txt  --species hg19 --n_chains 2 --n_batches 2 --n_samples 300 --batch_size 150
+
+This will produce filtered counts, targets, spacers and the posterior_outfile.tsv
+
+2. Construction of Convolution Matrix Command:
+
+decryptr predict grna_targets_filtered.tsv True --spacers grna_sequences_filtered.tsv --species hg19
+
+This will produce convolution_matrix.p file
+
+3. Classify Command:
+
+decryptr classify posterior_outfile.tsv grna_targets_filtered.tsv convolution_matrix.p --hyperparameters hyperparam_file.txt
+
+This will create the folders for each effect containing results
+

@@ -1,0 +1,16 @@
+	replicate
+high0	1
+high1	2
+high2	3
+high3	4
+high4	5
+high5	6
+low0	1
+low1	2
+low2	3
+low3	4
+low4	5
+low5	6
+early0	7
+early1	8
+early2	9

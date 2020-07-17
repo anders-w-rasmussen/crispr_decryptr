@@ -1,0 +1,44 @@
+INFO:root:read data file: grna_counts.txt
+INFO:root:read design matrix file: design_matrix.txt
+INFO:root:read replicate information file: rep_info.txt
+INFO:root:genererated stan input data dictionary
+INFO:root:stan input generated
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:compiled model file: /Users/arasmussen/opt/anaconda3/lib/python3.7/site-packages/decryptr/mcmc_glm/crispr_decryptr
+INFO:root:starting sampling
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:compiled model file: /Users/arasmussen/opt/anaconda3/lib/python3.7/site-packages/decryptr/mcmc_glm/crispr_decryptr
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:compiled model file: /Users/arasmussen/opt/anaconda3/lib/python3.7/site-packages/decryptr/mcmc_glm/crispr_decryptr
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:compiled model file: /Users/arasmussen/opt/anaconda3/lib/python3.7/site-packages/decryptr/mcmc_glm/crispr_decryptr
+DEBUG:cmdstanpy:input tempfile: /var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/hbsjbw3z.json
+INFO:cmdstanpy:found newer exe file, not recompiling
+INFO:cmdstanpy:compiled model file: /Users/arasmussen/opt/anaconda3/lib/python3.7/site-packages/decryptr/mcmc_glm/crispr_decryptr
+DEBUG:cmdstanpy:input tempfile: /var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/0ayr613y.json
+DEBUG:cmdstanpy:input tempfile: /var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/vwch8pss.json
+DEBUG:cmdstanpy:input tempfile: /var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/3rfffkro.json
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 1
+INFO:cmdstanpy:start chain 1
+DEBUG:cmdstanpy:sampling: /Users/arasmussen/opt/anaconda3/lib/python3.7/site-packages/decryptr/mcmc_glm/crispr_decryptr id=1 random seed=25287 data file=/var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/0ayr613y.json output file=/var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/stan-crispr_decryptr-Method.SAMPLE-1-uq6q95j8.csv method=sample num_samples=200 num_warmup=200 algorithm=hmc adapt engaged=1
+DEBUG:cmdstanpy:sampling: /Users/arasmussen/opt/anaconda3/lib/python3.7/site-packages/decryptr/mcmc_glm/crispr_decryptr id=1 random seed=82092 data file=/var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/hbsjbw3z.json output file=/var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/stan-crispr_decryptr-Method.SAMPLE-1-znk_8qyz.csv method=sample num_samples=200 num_warmup=200 algorithm=hmc adapt engaged=1
+DEBUG:cmdstanpy:sampling: /Users/arasmussen/opt/anaconda3/lib/python3.7/site-packages/decryptr/mcmc_glm/crispr_decryptr id=1 random seed=61465 data file=/var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/vwch8pss.json output file=/var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/stan-crispr_decryptr-Method.SAMPLE-1-7a66bd0q.csv method=sample num_samples=200 num_warmup=200 algorithm=hmc adapt engaged=1
+DEBUG:cmdstanpy:sampling: /Users/arasmussen/opt/anaconda3/lib/python3.7/site-packages/decryptr/mcmc_glm/crispr_decryptr id=1 random seed=72748 data file=/var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/3rfffkro.json output file=/var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/stan-crispr_decryptr-Method.SAMPLE-1-k4c9wanx.csv method=sample num_samples=200 num_warmup=200 algorithm=hmc adapt engaged=1
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 2
+INFO:cmdstanpy:start chain 2
+DEBUG:cmdstanpy:sampling: /Users/arasmussen/opt/anaconda3/lib/python3.7/site-packages/decryptr/mcmc_glm/crispr_decryptr id=2 random seed=72748 data file=/var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/3rfffkro.json output file=/var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/stan-crispr_decryptr-Method.SAMPLE-2-8oxhcie6.csv method=sample num_samples=200 num_warmup=200 algorithm=hmc adapt engaged=1
+DEBUG:cmdstanpy:sampling: /Users/arasmussen/opt/anaconda3/lib/python3.7/site-packages/decryptr/mcmc_glm/crispr_decryptr id=2 random seed=82092 data file=/var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/hbsjbw3z.json output file=/var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/stan-crispr_decryptr-Method.SAMPLE-2-xh6u96k5.csv method=sample num_samples=200 num_warmup=200 algorithm=hmc adapt engaged=1
+DEBUG:cmdstanpy:sampling: /Users/arasmussen/opt/anaconda3/lib/python3.7/site-packages/decryptr/mcmc_glm/crispr_decryptr id=2 random seed=61465 data file=/var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/vwch8pss.json output file=/var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/stan-crispr_decryptr-Method.SAMPLE-2-bzn2nryk.csv method=sample num_samples=200 num_warmup=200 algorithm=hmc adapt engaged=1
+DEBUG:cmdstanpy:sampling: /Users/arasmussen/opt/anaconda3/lib/python3.7/site-packages/decryptr/mcmc_glm/crispr_decryptr id=2 random seed=25287 data file=/var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/0ayr613y.json output file=/var/folders/pj/g99nkvnn0wvgsg78l5ydbhyh000158/T/tmpif6as1oq/stan-crispr_decryptr-Method.SAMPLE-2-5yexuw5m.csv method=sample num_samples=200 num_warmup=200 algorithm=hmc adapt engaged=1
+INFO:cmdstanpy:finish chain 1
+INFO:cmdstanpy:finish chain 1
+INFO:cmdstanpy:finish chain 2
+INFO:cmdstanpy:finish chain 2
+INFO:cmdstanpy:finish chain 1
+INFO:cmdstanpy:finish chain 1
+INFO:cmdstanpy:finish chain 2
+INFO:cmdstanpy:finish chain 2
