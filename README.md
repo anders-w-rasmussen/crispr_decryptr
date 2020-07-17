@@ -42,8 +42,6 @@ Thirdly, the *classify* command takes the results of the first two commands to m
 
 <br />
 
-<br />
-
 # Getting Started 
 
 To get introduced to CRISPR-Decryptr, we can start by running the code on some simple simulated data. You don't need any experience in programming languages, just a terminal window and optionally Excel to get your data prepared in some simple .tsv files. 
