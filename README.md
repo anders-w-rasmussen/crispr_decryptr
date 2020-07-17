@@ -4,15 +4,12 @@
 
 <p align="center">
 Computational Method for the Analysis of CRISPR Noncoding Screens.   <br />
-Preprint on BioRxiv:
 </p>
 
 <p align="center">
 Contact: Anders Rasmussen   <br />
 email: arasmussen@flatironinstitute.org
 </p>
-
-
 
 
 # Installing
