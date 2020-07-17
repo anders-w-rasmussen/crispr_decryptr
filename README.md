@@ -106,7 +106,7 @@ Let's use a relatively small batch size so this doesn't take too long. Type:
 ```bash
 decryptr infer grna_counts.tsv design_matrix.tsv replicate_info.tsv --batch_size 100 --n_batches 4
 ```
-CRISPR-Decryptr breaks apart the gRNA counts into batches. Smaller batch sizes allows the analysis to run faster at the expense of accuracy in its results. We suggest keeping this argument above 100. When this part of the method is done running (should take on the order of tens of minutes) it will produce the file *posterior_outfile.tsv*. This could take a few minutes depending on your hardware. 
+CRISPR-Decryptr breaks apart the gRNA counts into batches. Smaller batch sizes allows the analysis to run faster at the expense of accuracy in its results. We suggest keeping this argument above 100. When this part of the method is done running (should take on the order of tens of minutes) it will produce the file *posterior_outfile.tsv*. 
 
 ### Step 3: Create the Convolution Matrix (Predict)
 
