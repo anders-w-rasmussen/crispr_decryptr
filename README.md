@@ -23,7 +23,7 @@ Please note that CRISPR-Decryptr requires Python 3.6. It also requires wget to c
 
 # The Method 
 
-<img align="left" src=/readme_files/figure_1.png alt="drawing" width="600"/>
+<img align="left" src=/readme_files/figure_1.png alt="drawing" width="500"/>
 
 There are three parts to the **CRISPR Decryptr** method:
 
