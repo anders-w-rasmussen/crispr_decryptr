@@ -2,7 +2,7 @@ import numpy as np
 import re
 from scipy import sparse
 import time
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 from Bio import SeqIO
 from multiprocessing import Process, Manager
 import csv
