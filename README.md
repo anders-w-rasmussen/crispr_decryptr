@@ -138,7 +138,7 @@ This will write folders containing the regulatory element calls and deconvolved 
 
 ### Step 4: Visualize the Results
 
-If we open the folders titled "common" and "treatment" we can find the deconvolved signal and enhancer calls. If we open these files in a genomic viewer it should look something like this!
+If we open the folders titled "common" and "treatment" we can find the deconvolved signal and enhancer calls. If we open these files in a genomic viewer, and navigate to chr2:60,038,379-60,046,564 it should look something like this!
 
 
 <p align="left">
