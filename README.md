@@ -56,16 +56,16 @@ First, lets look at *grna_counts.tsv*. The first three rows of our raw gRNA coun
 
 | treatment_rep1 | control_rep1 | early_rep1 | treatment_rep2 | control_rep2 | early_rep2 |
 |----------------|--------------|------------|----------------|--------------|------------|
-| 1820           | 1231         | 1104       | 1923           | 1210         | 1166       |
-| 2382           | 1356         | 1227       | 2321           | 1378         | 1219       |
+| 43           | 60         | 121       | 145          | 144         | 150       |
+| 84           | 80        | 126      | 157          | 193         | 182       |
 | ...          | ...        | ...      | ...           | ...        | ...       |
 
 Each column represents a different sample. The first row contains sample names, and the remaining rows represent gRNA counts corresponding to the targets in the target file *grna_targets.tsv*
 
 | chr2 |
 |----------------|
-| 49068782          |
-| 49067819         |
+| 60034098          |
+| 60034138         |
 | ...          |
 
 This file is just one column, it begins with the chromosome under consideration. Each successive entry is genomic position of the gRNA target. In this instance, the first guide targeting chr2:49068782 is in the second row of the file, which corresponds to the second row in the *gnra_counts.tsv* file. 
@@ -142,8 +142,7 @@ If we open the folders titled "common" and "treatment" we can find the deconvolv
 </p>
 
 
-Now that you've walked through all the different commands in CRISPR-Decryptr, we invite you to read the first two sections of our paper's supplemental notes to get familiar with all the arguments and funtionality of the method before analyzing your CRISPR screens. 
-
+Now that you've walked through all the different commands in CRISPR-Decryptr, we invite you to read the first two sections of our paper's supplemental notes to get familiar with all the arguments and funtionality of the method.
 
 
 # Credits
