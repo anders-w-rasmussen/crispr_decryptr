@@ -18,7 +18,7 @@ email: arasmussen@flatironinstitute.org
 pip install git+https://git@github.com/anders-w-rasmussen/crispr_decryptr
 ```
 
-Please note that CRISPR-Decryptr requires Python 3. It also requires wget to collect data off of the web (https://www.gnu.org/software/wget/). The code was written and tested on macOS (Mojave) using python 3.7, and is a command line application. The code is not intended for Windows. 
+Please note that CRISPR-Decryptr requires Python 3. It also requires Xcode on Mac and wget to collect data off of the web (https://www.gnu.org/software/wget/). The code was written and tested on macOS (Mojave) using python 3.7, and is a command line application. The code is not intended for Windows. 
 
 
 # The Method 
