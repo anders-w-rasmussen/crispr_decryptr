@@ -7,14 +7,17 @@ import pandas as pd
 from multiprocessing import Pool, cpu_count
 from decryptr.mcmc_glm import istarmap
 from tqdm import tqdm
-from cmdstanpy import cmdstan_path, CmdStanModel
+from cmdstanpy import cmdstan_path, CmdStanModel, install_cmdstan
 from decryptr.mcmc_glm.filter_guides import filter_guides
+import shutil
 
 
 def analyze(count_filename, design_matrix_filename, replicate_information_filename,
             sample_file_prefix, n_chains, n_samples, batch_size,
             n_batches, output_filename, logfilename, outfile_devs, species, target_file, spacers_file, lambda_filename=None):
 
+            
+    install_cmdstan()
 
     if species != None:
         filter_guides(count_filename, target_file, spacers_file, 0.2, species)
@@ -382,7 +385,7 @@ def generate_stan_input_collapsed(data_filename, design_matrix_filename,
 def helper(data, crispr_decryptr_model, n_chains, n_samples, output_prefix, batch_idx):
     crispr_decryptr_model.compile()
     crispr_decryptr_fit = crispr_decryptr_model.sample(data=data, chains=n_chains, warmup_iters=n_samples,
-                                                       sampling_iters=n_samples, save_warmup=False, show_progress=False)
+                                                       iter_warmup=n_samples, iter_sampling=n_samples, save_warmup=False, show_progress=False)
 
     # save_csvfiles will fail if any of the target files exist, thus let's delete them
     sample_filenames = ['%s-%d-%d.csv' % (output_prefix, batch_idx, idx) for idx in range(1, n_chains + 1)]
@@ -392,6 +395,13 @@ def helper(data, crispr_decryptr_model, n_chains, n_samples, output_prefix, batc
 
     crispr_decryptr_fit.save_csvfiles(dir='.', basename='%s-%d' % (output_prefix, batch_idx))
     logging.info('saved sample files: %s' % (', '.join(sample_filenames)))
+            
+    for filename in crispr_decryptr_fit.runset._csv_files:
+            basename = os.path.basename(filename)
+            shutil.move(filename,os.path.join('./','%s-%d-%s.csv'%(output_prefix,batch_idx,basename.split('-')[-2])))
+    logger.info('saved sample files: %s'%(', '.join(sample_filenames)))        
+            
+  
 
     return True
 
