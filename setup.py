@@ -31,7 +31,7 @@ classifiers=[
                         'tqdm',
                         'halo',
                         'cmdstanpy',
-                        'tensorflow',
+                        'tensorflow==2.0.0',
                         ],
   
   
