@@ -18,7 +18,7 @@ email: arasmussen@flatironinstitute.org
 pip install git+https://git@github.com/anders-w-rasmussen/crispr_decryptr
 ```
 
-Please note that CRISPR-Decryptr requires Python 3.6. It also requires wget to collect data off of the web (https://www.gnu.org/software/wget/). The code was written and tested on macOS (Mojave), and is a command line application. The code is not intended for Windows. 
+Please note that CRISPR-Decryptr requires Python 3. It also requires wget to collect data off of the web (https://www.gnu.org/software/wget/). The code was written and tested on macOS (Mojave) using python 3.7, and is a command line application. The code is not intended for Windows. 
 
 
 # The Method 
@@ -106,7 +106,7 @@ Let's use a relatively small batch size so this doesn't take too long. Type:
 ```bash
 decryptr infer grna_counts.tsv design_matrix.tsv replicate_info.tsv --batch_size 100 --n_batches 4
 ```
-CRISPR-Decryptr breaks apart the gRNA counts into batches. Smaller batch sizes allows the analysis to run faster at the expense of accuracy in its results. We suggest keeping this argument above 100. When this part of the method is done running (should take on the order of tens of minutes) it will produce the file *posterior_outfile.tsv*. We've included this so you don't need to wait for the analysis to complete. 
+CRISPR-Decryptr breaks apart the gRNA counts into batches. Smaller batch sizes allows the analysis to run faster at the expense of accuracy in its results. We suggest keeping this argument above 100. When this part of the method is done running (should take on the order of tens of minutes) it will produce the file *posterior_outfile.tsv*. This could take a few minutes depending on your hardware. 
 
 ### Step 3: Create the Convolution Matrix (Predict)
 
