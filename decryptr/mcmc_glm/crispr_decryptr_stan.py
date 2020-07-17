@@ -24,6 +24,7 @@ def analyze(count_filename, design_matrix_filename, replicate_information_filena
         count_filename = count_filename.split(".")[0] + '_filtered.tsv'
 
     logging.basicConfig(filename='decryptr_infer.log', level=logging.DEBUG)
+    logging.getLogger("cmdstanpy").setLevel(logging.INFO)
 
 
     data_dict = generate_stan_input_collapsed(count_filename, design_matrix_filename,
@@ -393,8 +394,6 @@ def helper(data, crispr_decryptr_model, n_chains, n_samples, output_prefix, batc
         if os.path.exists(sample_filename):
             os.remove(sample_filename)
 
-    crispr_decryptr_fit.save_csvfiles(dir='.', basename='%s-%d' % (output_prefix, batch_idx))
-    logging.info('saved sample files: %s' % (', '.join(sample_filenames)))
             
     for filename in crispr_decryptr_fit.runset._csv_files:
             basename = os.path.basename(filename)
