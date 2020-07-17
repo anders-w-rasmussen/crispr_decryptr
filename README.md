@@ -151,9 +151,7 @@ pip install --upgrade git+https://git@github.com/anders-w-rasmussen/crispr_decry
 ```
 
 There are a couple issues we have encountered when using unsupported versions of some Python packages. For example, if you have run the *infer* command and saw something like:
-*TypeError: sample() got an unexpected keyword argument* 
-
-This might be because of an older versions of cmdstanpy which had different arguments. Please ensure you have the latest version of CRISPR-Decryptr installed and type:
+*TypeError: sample() got an unexpected keyword argument*, this might be because of an older versions of cmdstanpy which had different arguments. Please ensure you have the latest version of CRISPR-Decryptr installed and type:
 
 ```bash
 pip install --upgrade cmdstanpy
