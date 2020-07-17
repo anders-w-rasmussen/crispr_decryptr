@@ -144,22 +144,22 @@ Now that you've walked through all the different commands in CRISPR-Decryptr, we
 
 # Troubleshooting
 
-First, make sure you have the latest version of CRISPR-Decryptr. This should take care of dependencies. You can do this with the following command:
+First, make sure you have the latest version of CRISPR-Decryptr. This should take care of dependencies, which should fix the issues we will discuss below. You can do this with the following command:
 
 ```bash
 pip install --upgrade git+https://git@github.com/anders-w-rasmussen/crispr_decryptr
 ```
 
-You may have run the *infer* command and saw something like:
+There are a couple issues we have encountered when using unsupported versions of some Python packages. For example, if you have run the *infer* command and saw something like:
 *TypeError: sample() got an unexpected keyword argument* 
 
-We have encountered this when using older versions of cmdstanpy which had different arguments. Please ensure you have the latest version of CRISPR-Decryptr installed and type:
+This might be because of an older versions of cmdstanpy which had different arguments. Please ensure you have the latest version of CRISPR-Decryptr installed and type:
 
 ```bash
 pip install --upgrade cmdstanpy
 ```
 
-There is also an issue that might occur with TensorFlow 2.2.0. If you see an error from TensorFlow or Keras about the .h5 file, this is something that is going to be fixed in 2.3 (https://github.com/tensorflow/tensorflow/issues/38135). As such we will be including TensorFlow 2.0.0 as a dependency until 2.3 and reccomend using CRISPR-Decrytr with this version. Reinstalling should take care of this, or you could pip install 2.0.0 directly with 
+There is also an issue that might occur with TensorFlow 2.2.0. If you see an error from TensorFlow or Keras about the .h5 file, this is something that is going to be fixed in 2.3 (https://github.com/tensorflow/tensorflow/issues/38135). As such we will be including TensorFlow 2.0.0 as a dependency until 2.3 and suggest using CRISPR-Decrytr with this version. Reinstalling should take care of this, or you could pip install 2.0.0 directly with 
 
 ```bash
 pip install tensorflow==2.0.0
