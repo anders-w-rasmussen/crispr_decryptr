@@ -18,6 +18,10 @@ email: arasmussen@flatironinstitute.org
 pip install git+https://git@github.com/anders-w-rasmussen/crispr_decryptr
 ```
 
+# Requirements
+
+We recommend running the method on hardware with at least 10GB of memory. As the method is highly parellelized, running on a multi-core CPU or cluster is ideal for large datasets. We tested the method on a MacBook Pro with 3.1 GHz Intel Core i7 + 16GB of RAM and were able to run published datasets within hours using appropriate options. 
+
 Please note that CRISPR-Decryptr requires Python 3. It also requires Xcode on Mac and wget to collect data off of the web (https://www.gnu.org/software/wget/). The code was written and tested on macOS (Mojave) using python 3.7, and is a command line application. The code is not intended for Windows. 
 
 
@@ -162,6 +166,12 @@ There is also an issue that might occur with TensorFlow 2.2.0. If you see an err
 ```bash
 pip install tensorflow==2.0.0
 ```
+
+The method is doing a lot of matrix algebra in the *classify* step, so it is possible your comput
+
+
+
+
 
 # Credits
 
