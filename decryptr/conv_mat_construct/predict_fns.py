@@ -122,7 +122,7 @@ def cmat_run(targets_file, cas9_alg, filter_dev, filter_window, spacers, species
 
         # Convert bigWig to .wig
 
-        print("decryptr: getting uniqeuness of the region under consideration")
+        print("decryptr: getting uniqueness of the region under consideration")
         os.system('chmod 777 ' + cur_path + '/bigWigToWig')
         os.system(cur_path + '/bigWigToWig ' + ref_path + '/uniqueness/wgEncodeDukeMapabilityUniqueness20bp.bigWig ' + ref_path + '/uniqueness/temp.wig' + ' -chrom=' + chromosome + ' -start=' + str(region_start - 10) + ' -end=' + str(region_end + 10))
 
