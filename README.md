@@ -142,6 +142,24 @@ If we open the folders titled "common" and "treatment" we can find the deconvolv
 Now that you've walked through all the different commands in CRISPR-Decryptr, we invite you to read the first two sections of our paper's supplemental notes to get familiar with all the arguments and funtionality of the method.
 
 
+# Troubleshooting
+
+First, make sure you have the latest version of CRISPR-Decryptr, you can do this with the following command. 
+
+```bash
+pip install --upgrade git+https://git@github.com/anders-w-rasmussen/crispr_decryptr
+```
+
+If you ran the *infer* command and saw something like:
+*TypeError: sample() got an unexpected keyword argument 
+
+We have encountered this when using older versions of cmdstanpy which had different arguments. Please ensure you have the latest version of CRISPR-Decryptr installed and type:
+
+```bash
+pip install --upgrade cmdstanpy
+```
+
+
 # Credits
 
 Co-First Authors on Paper: Anders Rasmussen, Tarmo Äijö  <br />
