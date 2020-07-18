@@ -167,7 +167,7 @@ There is also an issue that might occur with TensorFlow 2.2.0. If you see an err
 pip install tensorflow==2.0.0
 ```
 
-There is some memory-intensive matrix algebra *classify* step, so if you are doing a big CRISPR screen it is possible you may get a SIGKILL 9 error here. If this happens, try a computer with more memory. Another option, while not ideal, would be to divide the problem into smaller chunks that are managable on your hardware.  
+There is some memory-intensive matrix algebra *classify* step, so if you are doing a big CRISPR screen it is possible you may get a SIGKILL 9 error here. If this happens and you do not have access to a computer or cluster with more memory, you can divide your problem into smaller chunks that are managable on your hardware.  
 
 
 # Credits
