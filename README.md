@@ -191,7 +191,7 @@ mkdir uniqueness
 ```
 
 Then please place these files in the fastas folder:
-ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/
+http://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/
 
 And this file in the uniqueness folder:
 http://hgdownload.soe.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeMapability/wgEncodeDukeMapabilityUniqueness20bp.bigWig
