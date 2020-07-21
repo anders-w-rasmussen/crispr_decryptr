@@ -180,9 +180,10 @@ pip install --upgrade cmdstanpy
 
 For the alignment algorithm, the *predict* command downloads genome references and uniqueness tracks off the internet into the species folder *"...python3.7/site-packages/decryptr/hg19"* (in the case of hg19). If CRISPR-Decryptr is downloading these files and something interrupts it there may be an error. Please delete the folder (in this case hg19) and try again. 
 
-Hopefully it won't be required, but if you need to manually download these files for some reason, please cd into *"...python3.7/site-packages/decryptr"* and try the following:
+Hopefully it won't be required, but if you need to manually download these files for some reason, please try the following:
 
 ```bash
+cd /where/folder/exists...python3.7/site-packages/decryptr
 mkdir hg19
 cd hg19
 mkdir fastas
