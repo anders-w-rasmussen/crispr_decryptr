@@ -67,7 +67,7 @@ def cmat_run(targets_file, cas9_alg, filter_dev, filter_window, spacers, species
                     print("decryptr: downloading hg19 reference")
                     os.system('mkdir ' + str(ref_path) + '/fastas')
                     os.system(
-                        'wget --timestamping --show-progress --directory-prefix=' + ref_path + "/fastas" + ' ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/*')
+                        'wget --directory-prefix=' + ref_path + "/fastas" + ' ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/*')
                     print("decryptr: unzipping all hg19 genome .fasta files")
                     os.system('gunzip ' + str(ref_path) + '/fastas/*.fa.gz')
 
@@ -119,7 +119,7 @@ def cmat_run(targets_file, cas9_alg, filter_dev, filter_window, spacers, species
             print("decryptr: downloading hg19 reference")
             os.system('mkdir ' + str(ref_path) + '/fastas')
             os.system(
-                'wget --timestamping --show-progress --directory-prefix=' + ref_path + "/fastas" + ' ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/*')
+                'wget --directory-prefix=' + ref_path + "/fastas" + ' ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/*')
             print("decryptr: unzipping all hg19 genome .fasta files")
             os.system('gunzip ' + str(ref_path) + '/fastas/*.fa.gz')
 
