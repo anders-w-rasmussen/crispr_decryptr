@@ -178,6 +178,22 @@ pip install --upgrade cmdstanpy
 
 ### Troubleshooting the *predict* command
 
+For the alignment algorithm, the *predict* command downloads genome references and uniqueness tracks off the internet into the species folder *"...python3.7/site-packages/decryptr/hg19"* (in the case of hg19). If CRISPR-Decryptr is downloading these files and something interrupts it there may be an error. Please delete the folder (in this case hg19) and try again. 
+
+Hopefully it won't be required, but if you need to manually download these files for some reason, please cd into *"...python3.7/site-packages/decryptr"* and try the following:
+
+```bash
+mkdir hg19
+cd hg19
+mkdir fastas
+mkdir uniqueness
+```
+
+Then please place these files in the fastas folder:
+ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/
+
+And this file in the uniqueness folder:
+http://hgdownload.soe.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeMapability/wgEncodeDukeMapabilityUniqueness20bp.bigWig
 
 There is an issue that might occur with TensorFlow 2.2.0. If you see an error from TensorFlow or Keras about the .h5 file, this is something that is going to be fixed in 2.3 (https://github.com/tensorflow/tensorflow/issues/38135). As such we will be including TensorFlow 2.0.0 as a dependency until 2.3 and suggest using CRISPR-Decrytr with this version. Reinstalling should take care of this, or you could pip install 2.0.0 directly with 
 
