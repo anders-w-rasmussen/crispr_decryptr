@@ -183,7 +183,7 @@ For the alignment algorithm, the *predict* command downloads genome references a
 Hopefully it won't be required, but if you need to manually download these files for some reason, please try the following:
 
 ```bash
-cd /where/folder/exists...python3.7/site-packages/decryptr
+cd /where/folder/exists/...python3.7/site-packages/decryptr
 mkdir hg19
 cd hg19
 mkdir fastas
