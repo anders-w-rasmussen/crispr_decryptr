@@ -156,8 +156,21 @@ pip install --upgrade git+https://git@github.com/anders-w-rasmussen/crispr_decry
 
 ### Troubleshooting the *infer* command
 
-There are a couple issues we have encountered when using unsupported versions of some Python packages. For example, if you have run the *infer* command and saw something like:
-*TypeError: sample() got an unexpected keyword argument*, this might be because of an older versions of cmdstanpy which had different arguments. Please ensure you have the latest version of CRISPR-Decryptr installed and type:
+If you are having issues with Stan or the Stan model, it is possible *cmdstanpy* isn't correctly installing *cmdstan*. We suggest manual installation as follows:
+
+```bash
+git clone --recursive https://github.com/stan-dev/cmdstan
+cd cmdstan
+make build
+export CMDSTAN='/path/to/cmdstan'
+```
+
+If you are using a cluster, make sure you load gcc:
+```bash
+module load gcc
+```
+
+If you see *TypeError: sample() got an unexpected keyword argument*, this might be because of an older versions of cmdstanpy which had different arguments. Please ensure you have the latest version of CRISPR-Decryptr installed and type:
 
 ```bash
 pip install --upgrade cmdstanpy
@@ -175,9 +188,6 @@ pip install tensorflow==2.0.0
 ### Troubleshooting the *classify* command
 
 There is some memory-intensive matrix algebra *classify* step, so if you are doing a big CRISPR screen it is possible you may get a SIGKILL 9 error here. If this happens and you do not have access to a computer or cluster with more memory, you can divide your problem into smaller chunks that are managable on your hardware.  
-
-
-
 
 
 
