@@ -154,6 +154,8 @@ First, make sure you have the latest version of CRISPR-Decryptr. This should tak
 pip install --upgrade git+https://git@github.com/anders-w-rasmussen/crispr_decryptr
 ```
 
+### Troubleshooting the *infer* command
+
 There are a couple issues we have encountered when using unsupported versions of some Python packages. For example, if you have run the *infer* command and saw something like:
 *TypeError: sample() got an unexpected keyword argument*, this might be because of an older versions of cmdstanpy which had different arguments. Please ensure you have the latest version of CRISPR-Decryptr installed and type:
 
@@ -161,13 +163,22 @@ There are a couple issues we have encountered when using unsupported versions of
 pip install --upgrade cmdstanpy
 ```
 
+### Troubleshooting the *predict* command
+
+
 There is also an issue that might occur with TensorFlow 2.2.0. If you see an error from TensorFlow or Keras about the .h5 file, this is something that is going to be fixed in 2.3 (https://github.com/tensorflow/tensorflow/issues/38135). As such we will be including TensorFlow 2.0.0 as a dependency until 2.3 and suggest using CRISPR-Decrytr with this version. Reinstalling should take care of this, or you could pip install 2.0.0 directly with 
 
 ```bash
 pip install tensorflow==2.0.0
 ```
 
+### Troubleshooting the *classify* command
+
 There is some memory-intensive matrix algebra *classify* step, so if you are doing a big CRISPR screen it is possible you may get a SIGKILL 9 error here. If this happens and you do not have access to a computer or cluster with more memory, you can divide your problem into smaller chunks that are managable on your hardware.  
+
+
+
+
 
 
 # Credits
