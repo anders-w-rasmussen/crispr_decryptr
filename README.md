@@ -148,7 +148,7 @@ Now that you've walked through all the different commands in CRISPR-Decryptr, we
 
 # Troubleshooting
 
-First, make sure you have the latest version of CRISPR-Decryptr. This should take care of dependencies, which should fix the issues we will discuss below. You can do this with the following command:
+First, please make sure you have the most recent version of CRISPR-Decryptr by running the following command:
 
 ```bash
 pip install --upgrade git+https://git@github.com/anders-w-rasmussen/crispr_decryptr
