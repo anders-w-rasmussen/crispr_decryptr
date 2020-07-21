@@ -10,6 +10,7 @@ import pickle
 import os
 from alive_progress import alive_bar, config_handler
 from halo import Halo
+from sys import platform
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 def cmat_run(targets_file, cas9_alg, filter_dev, filter_window, spacers, species, reference, uniqueness, ignore_spec, logfile,
@@ -79,8 +80,14 @@ def cmat_run(targets_file, cas9_alg, filter_dev, filter_window, spacers, species
                 # Convert bigWig to .wig
 
                 print("decryptr: getting uniqueness of the region under consideration")
-                os.system('chmod 777 ' + cur_path + '/bigWigToWig')
-                os.system(cur_path + '/bigWigToWig ' + ref_path + '/uniqueness/wgEncodeDukeMapabilityUniqueness20bp.bigWig ' + ref_path + '/uniqueness/temp.wig' + ' -chrom=' + chromosome + ' -start=' + str(region_start - 10) + ' -end=' + str(region_end + 10))
+                
+                if platform == "linux" or platform == "linux2":
+                    os.system('chmod 777 ' + cur_path + '/bigWigToWig_linux')
+                    os.system(cur_path + '/bigWigToWig_linux ' + ref_path + '/uniqueness/wgEncodeDukeMapabilityUniqueness20bp.bigWig ' + ref_path + '/uniqueness/temp.wig' + ' -chrom=' + chromosome + ' -start=' + str(region_start - 10) + ' -end=' + str(region_end + 10))
+
+                else:
+                    os.system('chmod 777 ' + cur_path + '/bigWigToWig')
+                    os.system(cur_path + '/bigWigToWig ' + ref_path + '/uniqueness/wgEncodeDukeMapabilityUniqueness20bp.bigWig ' + ref_path + '/uniqueness/temp.wig' + ' -chrom=' + chromosome + ' -start=' + str(region_start - 10) + ' -end=' + str(region_end + 10))
 
                 map_file = ref_path + '/uniqueness/temp.wig'
 
@@ -123,8 +130,13 @@ def cmat_run(targets_file, cas9_alg, filter_dev, filter_window, spacers, species
         # Convert bigWig to .wig
 
         print("decryptr: getting uniqueness of the region under consideration")
-        os.system('chmod 777 ' + cur_path + '/bigWigToWig')
-        os.system(cur_path + '/bigWigToWig ' + ref_path + '/uniqueness/wgEncodeDukeMapabilityUniqueness20bp.bigWig ' + ref_path + '/uniqueness/temp.wig' + ' -chrom=' + chromosome + ' -start=' + str(region_start - 10) + ' -end=' + str(region_end + 10))
+        if platform == "linux" or platform == "linux2":
+            os.system('chmod 777 ' + cur_path + '/bigWigToWig_linux')
+            os.system(cur_path + '/bigWigToWig_linux ' + ref_path + '/uniqueness/wgEncodeDukeMapabilityUniqueness20bp.bigWig ' + ref_path + '/uniqueness/temp.wig' + ' -chrom=' + chromosome + ' -start=' + str(region_start - 10) + ' -end=' + str(region_end + 10))
+
+        else:
+            os.system('chmod 777 ' + cur_path + '/bigWigToWig')
+            os.system(cur_path + '/bigWigToWig ' + ref_path + '/uniqueness/wgEncodeDukeMapabilityUniqueness20bp.bigWig ' + ref_path + '/uniqueness/temp.wig' + ' -chrom=' + chromosome + ' -start=' + str(region_start - 10) + ' -end=' + str(region_end + 10))
 
         map_file = ref_path + '/uniqueness/temp.wig'
 
