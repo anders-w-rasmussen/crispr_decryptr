@@ -179,7 +179,7 @@ pip install --upgrade cmdstanpy
 ### Troubleshooting the *predict* command
 
 
-There is also an issue that might occur with TensorFlow 2.2.0. If you see an error from TensorFlow or Keras about the .h5 file, this is something that is going to be fixed in 2.3 (https://github.com/tensorflow/tensorflow/issues/38135). As such we will be including TensorFlow 2.0.0 as a dependency until 2.3 and suggest using CRISPR-Decrytr with this version. Reinstalling should take care of this, or you could pip install 2.0.0 directly with 
+There is an issue that might occur with TensorFlow 2.2.0. If you see an error from TensorFlow or Keras about the .h5 file, this is something that is going to be fixed in 2.3 (https://github.com/tensorflow/tensorflow/issues/38135). As such we will be including TensorFlow 2.0.0 as a dependency until 2.3 and suggest using CRISPR-Decrytr with this version. Reinstalling should take care of this, or you could pip install 2.0.0 directly with 
 
 ```bash
 pip install tensorflow==2.0.0
