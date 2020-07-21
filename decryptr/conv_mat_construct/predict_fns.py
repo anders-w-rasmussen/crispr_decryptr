@@ -75,7 +75,7 @@ def cmat_run(targets_file, cas9_alg, filter_dev, filter_window, spacers, species
                 if os.path.exists(ref_path + "/uniqueness") == False:
                     print("decryptr: downloading mappability track")
                     os.system(
-                        'wget --timestamping --show-progress --directory-prefix=' + ref_path + "/uniqueness" + ' http://hgdownload.soe.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeMapability/wgEncodeDukeMapabilityUniqueness20bp.bigWig')
+                        'wget --directory-prefix=' + ref_path + "/uniqueness" + ' http://hgdownload.soe.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeMapability/wgEncodeDukeMapabilityUniqueness20bp.bigWig')
 
                 #ref_file = curpath + "/hg19/" + chromosome + '.fa'
 
@@ -127,7 +127,7 @@ def cmat_run(targets_file, cas9_alg, filter_dev, filter_window, spacers, species
         if os.path.exists(ref_path + "/uniqueness") == False:
             print("decryptr: downloading mappability track")
             os.system(
-                'wget --timestamping --show-progress --directory-prefix=' + ref_path + "/uniqueness" + ' http://hgdownload.soe.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeMapability/wgEncodeDukeMapabilityUniqueness20bp.bigWig')
+                'wget --directory-prefix=' + ref_path + "/uniqueness" + ' http://hgdownload.soe.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeMapability/wgEncodeDukeMapabilityUniqueness20bp.bigWig')
 
         #ref_file = curpath + "/hg19/" + chromosome + '.fa'
 
