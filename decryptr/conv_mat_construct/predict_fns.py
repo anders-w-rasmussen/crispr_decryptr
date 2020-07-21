@@ -59,6 +59,8 @@ def cmat_run(targets_file, cas9_alg, filter_dev, filter_window, spacers, species
 
                 ref_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + '/hg19'
 
+                if os.path.exists(ref_path) == False:
+                    os.system('mkdir ' + str(ref_path))
 
                 if os.path.exists(ref_path + "/fastas") == False:
                     print("decryptr: first time aligning to hg19")
@@ -108,7 +110,9 @@ def cmat_run(targets_file, cas9_alg, filter_dev, filter_window, spacers, species
 
         cur_path = os.path.dirname(os.path.realpath(__file__))
         ref_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + '/hg19'
-        print(ref_path)
+        
+        if os.path.exists(ref_path) == False:
+            os.system('mkdir ' + str(ref_path))
 
         if os.path.exists(ref_path + "/fastas") == False:
             print("decryptr: first time aligning to hg19")
