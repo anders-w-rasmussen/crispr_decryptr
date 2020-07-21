@@ -156,7 +156,7 @@ pip install --upgrade git+https://git@github.com/anders-w-rasmussen/crispr_decry
 
 ### Troubleshooting the *infer* command
 
-If you are having issues with Stan or the Stan model, it is possible *cmdstanpy* isn't correctly installing *cmdstan*. We suggest manual installation as follows:
+If you are having issues with Stan or the Stan model, we suggest manual installation instead of relying on *cmdstanpy*. Please try the following:
 
 ```bash
 git clone --recursive https://github.com/stan-dev/cmdstan
