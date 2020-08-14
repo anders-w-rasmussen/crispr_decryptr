@@ -12,7 +12,7 @@ email: arasmussen@flatironinstitute.org
 </p>
 
 <div align="center">
-[Preprint on BiorXiv](https://www.biorxiv.org/content/10.1101/2020.08.13.247007v1 ).  <br />
+[Preprint on BiorXiv](https://www.biorxiv.org/content/10.1101/2020.08.13.247007v1 )  <br />
 [Supplemental Notes](https://www.biorxiv.org/content/biorxiv/early/2020/08/14/2020.08.13.247007/DC1/embed/media-1.pdf?download=true)   
 </div>
 
