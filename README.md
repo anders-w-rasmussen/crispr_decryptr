@@ -11,7 +11,7 @@ Contact: Anders Rasmussen   <br />
 email: arasmussen@flatironinstitute.org
 </p>
 
-<p align="center">
+<p style="text-align: center;">
 [Preprint on BiorXiv](https://www.biorxiv.org/content/10.1101/2020.08.13.247007v1 ) <br />
 [Supplemental Notes](https://www.biorxiv.org/content/biorxiv/early/2020/08/14/2020.08.13.247007/DC1/embed/media-1.pdf?download=true) 
 </p>
