@@ -259,7 +259,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                     for k in range(len(cmat_list)):
                         p = Process(target=run_slice, args=(cmat_list[k],
                                                                convolved_signal[k], x_list[k],
-                                                               target_locs_list[k], precision_vec_list[k]))
+                                                               target_locs_list[k], alpha_opt, rho_opt, sn_opt, precision_vec_list[k]))
                         p.start()
                         processes.append(p)
                     for p in processes:
