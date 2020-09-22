@@ -221,7 +221,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                 if np.size(terminal_idxs) >= 20:
                     break
 		
-	    print(np.size(terminal_idxs))
+            print(np.size(terminal_idxs))
 
             for i in range(0, np.size(terminal_idxs)):
                 if i == 0:
