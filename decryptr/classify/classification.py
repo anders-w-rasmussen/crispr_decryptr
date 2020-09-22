@@ -363,7 +363,7 @@ def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt
     mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal], [np.asarray(x, dtype=int)],
                                                        [target_locs], alpha_opt,
                                                        rho_opt, sn_opt,
-                                                       [1 / prec_vec], full_pred=True)
+                                                       [1 / prec_vec], full_pred=False)
 
     x_vals = np.asarray(x[np.argwhere(x_truncated[0] == True)].flatten(), dtype=int)
 
