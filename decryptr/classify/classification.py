@@ -247,7 +247,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                 last_idx = terminal_idx + 1
                 last_guide_idx = terminal_guide_idx + 1
             
-	    print("cmat_list length")
+            print("cmat_list length")
             print(len(cmat_list))
 
             if __name__ != "__main__":
