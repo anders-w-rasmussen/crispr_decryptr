@@ -352,7 +352,7 @@ def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt
     print(np.shape(target_locs))
     print(np.shape(prec_vec))
 	
-    mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat.flatten()], [convolved_signal.flatten()], [x.flatten()],
+    mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal.flatten()], [x.flatten()],
                                                        [target_locs.flatten()], alpha_opt,
                                                        rho_opt, sn_opt,
                                                        [1 / prec_vec.flatten()], full_pred=False)
