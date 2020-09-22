@@ -230,6 +230,9 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                 terminal_idx = terminal_idxs[i]
                 terminal_guide_idx = np.argmax(target_locs <= terminal_idx) + 1
 
+                print(terminal_idx)
+                print(terminal_guide_idx)
+		
                 if terminal_idx - last_idx <= 1000:
                     continue
                 if terminal_guide_idx - last_guide_idx < 20:
