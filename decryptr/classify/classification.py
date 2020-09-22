@@ -23,7 +23,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         prior_file = curpath + '/default_prior_file.tsv'
         print("decryptr: using default hyperparameters (two-state model)")
 
-    if parallelize in ['True', 'true']
+    if parallelize in ['True', 'true']:
 	parallelize = True
         print("decryptr: using parallelized implementation")
         print("please note this will discard distant off target binding events")
