@@ -260,6 +260,9 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                                                                target_locs_list[k], alpha_opt, rho_opt, sn_opt, precision_vec_list[k]))
                         p.start()
                         processes.append(p)
+                        if k > 0:
+                            break
+			
                     for p in processes:
                         p.join()
 
