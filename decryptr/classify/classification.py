@@ -134,8 +134,6 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         signal_sigma = np.std(convolved_signal)
         missing_obs = np.ones(T) * np.nan
 
-        max_distance = 50
-        gp_deconvolution = gp_utils.GP_Deconvolution(maximum_distance=max_distance)
 
         # Set the GP parameters
 
@@ -345,6 +343,9 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         print("decryptr: wrote output files for effect " + str(effect_names[j]))
 
 def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt, prec_vec):
+
+    max_distance = 50
+    gp_deconvolution = gp_utils.GP_Deconvolution(maximum_distance=max_distance)
 
     mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal], [x],
                                                        [target_locs], alpha_opt,
