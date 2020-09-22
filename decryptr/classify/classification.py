@@ -226,6 +226,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
             for i in range(0, np.size(terminal_idxs)):
                 if i == 0:
                     last_idx = 0
+                    last_guide_idx = 0
 
                 terminal_idx = terminal_idxs[i]
                 terminal_guide_idx = np.argmax(target_locs <= terminal_idx) + 1
