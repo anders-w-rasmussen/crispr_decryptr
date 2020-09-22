@@ -346,7 +346,12 @@ def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt
 
     max_distance = 50
     gp_deconvolution = gp_utils.GP_Deconvolution(maximum_distance=max_distance)
-
+    print(np.shape(cmat))
+    print(np.shape(convolved_signal))
+    print(np.shape(x))
+    print(np.shape(target_locs))
+    print(np.shape(prec_vec))
+	
     mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal], [x],
                                                        [target_locs], alpha_opt,
                                                        rho_opt, sn_opt,
