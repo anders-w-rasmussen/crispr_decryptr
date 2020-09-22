@@ -28,7 +28,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         print("decryptr: using parallelized implementation")
         print("please note this will discard distant off target binding events")
     else:
-	parallelize = False
+        parallelize = False
 	
 
     cmat = pickle.load(open(convolution_matrix, "rb"))
