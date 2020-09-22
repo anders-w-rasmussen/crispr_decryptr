@@ -239,7 +239,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
 
                 cmat_list.append(cmat[last_guide_idx:terminal_guide_idx, last_idx:terminal_idx])
                 convolved_signal_list.append(convolved_signal[last_guide_idx:terminal_guide_idx])
-                x_list.append(x[last_guide_idx:terminal_guide_idx])
+                x_list.append(x[last_idx:terminal_idx])
                 target_locs_list.append(target_locs[last_guide_idx:terminal_guide_idx])
                 precision_vec_list.append(prec_vec[last_guide_idx:terminal_guide_idx])
 
@@ -256,7 +256,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                     processes = []
                     for k in range(len(cmat_list)):
                         p = Process(target=run_slice, args=(cmat_list[k],
-                                                               convolved_signal[k], x_list[k],
+                                                               convolved_signal_list[k], x_list[k],
                                                                target_locs_list[k], alpha_opt, rho_opt, sn_opt, precision_vec_list[k]))
                         p.start()
                         processes.append(p)
