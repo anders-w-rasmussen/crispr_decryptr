@@ -229,7 +229,10 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                     last_guide_idx = 0
 
                 terminal_idx = terminal_idxs[i]
-                terminal_guide_idx = np.argmax((target_locs <= terminal_idx).flatten()) + 1
+                print(np.shape(target_locs <= terminal_idx))
+                print(np.argmax((target_locs <= terminal_idx).flatten()))
+		
+                terminal_guide_idx = np.argmax((target_locs <= terminal_idx).flatten())[0] + 1
 
                 print(terminal_idx)
                 print(terminal_guide_idx)
