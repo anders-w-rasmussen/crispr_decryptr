@@ -366,9 +366,11 @@ def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt
     print("precision_vec")
     print(prec_vec)
 
+    x -= np.min(x)
+    target_locs -= np.min(target_locs)
 	
-    mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal], [np.asarray(x - np.min(x), dtype=int)],
-                                                       [target_locs - np.min(target_locs)], alpha_opt,
+    mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal], [np.asarray(x, dtype=int)],
+                                                       [target_locs], alpha_opt,
                                                        rho_opt, sn_opt,
                                                        [1 / prec_vec], full_pred=False)
 
