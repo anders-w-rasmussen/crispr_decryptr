@@ -154,10 +154,12 @@ class decryptr(object):
         parser.add_argument('--parallelize', help='if True, implements the classify algorithm in a parallelized manner losing some off-target information', required=False,
                             default='False', action='store',
                             type=str, dest='parallelize')
+        parser.add_argument('--slices', action='store', dest='slices', type=int, required=False,
+                            default=10, help='number of segments if parallelize is True')
         
         args = parser.parse_args(sys.argv[2:])
         classify_procedure(args.effect_file, args.targets, args.conv_mat, args.logfilename,
-                       args.priors, args.out_dir, args.alpha, args.rho, args.sigma, args.bed_threshold, args.flip_sign, args.norm, args.hampel, args.parallelize)
+                       args.priors, args.out_dir, args.alpha, args.rho, args.sigma, args.bed_threshold, args.flip_sign, args.norm, args.hampel, args.parallelize, args.slices)
 
 if __name__ == '__main__':
     decryptr()
