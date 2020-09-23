@@ -237,8 +237,6 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                 terminal_idx = terminal_idxs[i]
                 terminal_guide_idx = np.argmax(np.argwhere((target_locs <= terminal_idx).flatten())) + 1
 
-                print(terminal_idx)
-                print(terminal_guide_idx)
 		
                 if terminal_idx - last_idx <= 1000:
                     continue
@@ -255,8 +253,6 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                 last_idx = terminal_idx + 1
                 last_guide_idx = terminal_guide_idx + 1
             
-            print("cmat_list length")
-            print(len(cmat_list))
 
             if __name__ != "__main__":
                 with Manager() as manager:
@@ -268,8 +264,6 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                                                                target_locs_list[k], alpha_opt, rho_opt, sn_opt, precision_vec_list[k]))
                         p.start()
                         processes.append(p)
-                        if k > 0:
-                            break
 			
                     for p in processes:
                         p.join()
