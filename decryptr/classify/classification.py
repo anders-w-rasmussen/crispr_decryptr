@@ -269,7 +269,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                         p.join()
 
                     saved_master_list = [x for x in master_list]
-		    saved_master_list_deconv = [x for x in master_list_deconv]
+                    saved_master_list_deconv = [x for x in master_list_deconv]
                     saved_master_list_var = [x for x in master_list_var]
 
 
