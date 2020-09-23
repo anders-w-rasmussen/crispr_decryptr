@@ -215,7 +215,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
             precision_vec_list = []
 
             for gap in [5000, 2000, 1000, 500, 100, 50, 20]:
-                terminal_idxs = np.append(target_locs[np.argwhere(diff_arr.flatten() > gap)], np.asarray([T], dtype = int))
+                terminal_idxs = np.append(target_locs[np.argwhere(diff_arr.flatten() > gap)] + buffer + 1, np.asarray([T], dtype = int))
                 if np.size(terminal_idxs) >= 20:
                     break
 		
@@ -227,7 +227,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                     last_guide_idx = 0
 
                 terminal_idx = terminal_idxs[i]
-                terminal_guide_idx = np.argmax(np.argwhere((target_locs <= terminal_idx - 2*buffer).flatten())) + 1
+                terminal_guide_idx = np.argmax(np.argwhere((target_locs <= terminal_idx).flatten())) + 1
 
                 print(terminal_idx)
                 print(terminal_guide_idx)
