@@ -259,7 +259,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                     for k in range(len(cmat_list)):
                         p = Process(target=run_slice, args=(cmat_list[k],
                                                                convolved_signal_list[k], x_list[k],
-                                                               target_locs_list[k], alpha_opt, rho_opt, sn_opt, precision_vec_list[k]))
+                                                               target_locs_list[k], alpha_opt, rho_opt, sn_opt, precision_vec_list[k], master_list))
                         p.start()
                         processes.append(p)
 			
@@ -345,7 +345,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
 
         print("decryptr: wrote output files for effect " + str(effect_names[j]))
 
-def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt, prec_vec):
+def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt, prec_vec, out_list):
 
     max_distance = 50
     gp_deconvolution = gp_utils.GP_Deconvolution(maximum_distance=max_distance)
@@ -396,4 +396,4 @@ def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt
 
     marg_probs, state_change = hsmm_model.give_gammas(obs_list, 0, state_change=True)
 
-    return marg_probs       # , state_change
+    out_list.append(marg_probs)       # , state_change
