@@ -68,6 +68,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         back_idx = np.argwhere(prior_names == 'Background')
     if np.size(back_idx) != 1:
         assert np.size(back_idx) == 0, "error: there must be one state labeled background"
+    global num_states
     num_states = np.size(prior_names)
 
     logging.info("loaded sparse convolution matrix")
