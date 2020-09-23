@@ -227,8 +227,6 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                 if np.size(terminal_idxs) >= 20:
                     break
 		
-            print(np.size(terminal_idxs))
-
             for i in range(0, np.size(terminal_idxs)):
                 if i == 0:
                     last_idx = 0
@@ -355,8 +353,6 @@ def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt
 
     x -= np.min(x)
     target_locs -= np.min(target_locs)
-
-    print("Deconvolving")
 	
     mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal], [np.asarray(x, dtype=int)],
                                                        [target_locs], alpha_opt,
@@ -380,7 +376,6 @@ def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt
     state_list = []
     obs_list = []
     obs_list.append(deconv_mean)
-    print("Classifying")
     for s in range(0, num_states):
         emit = [emits.normal_dist_known_precision_vector(np.median(deconv_mean) + prior_sigma_mus[s] * signal_sigma,
                                                          prior_taus[s], 1 / deconv_var)]
