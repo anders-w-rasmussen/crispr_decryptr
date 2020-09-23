@@ -246,7 +246,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                 if terminal_guide_idx - last_guide_idx < 20:
                     continue
 
-                cmat_list.append(cmat[last_guide_idx:terminal_guide_idx, last_idx:terminal_idx + 1])
+                cmat_list.append(cmat[last_guide_idx:terminal_guide_idx + 1, last_idx:terminal_idx + 1])
                 convolved_signal_list.append(convolved_signal[last_guide_idx:terminal_guide_idx + 1])
                 x_list.append(x[last_idx:terminal_idx + 1])
                 target_locs_list.append(target_locs[last_guide_idx:terminal_guide_idx + 1])
