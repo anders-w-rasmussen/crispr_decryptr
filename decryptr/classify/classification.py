@@ -357,18 +357,12 @@ def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt
 
     max_distance = 50
     gp_deconvolution = gp_utils.GP_Deconvolution(maximum_distance=max_distance)
-    print(np.shape(cmat))
-    print("convolved_sig")
-    print(convolved_signal)
-    print("x")
-    print(x)
-    print("targ_locs")
-    print(target_locs)
-    print("precision_vec")
-    print(prec_vec)
+    
 
     x -= np.min(x)
     target_locs -= np.min(target_locs)
+
+    print("Deconvolving")
 	
     mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal], [np.asarray(x, dtype=int)],
                                                        [target_locs], alpha_opt,
@@ -378,11 +372,6 @@ def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt
     x_vals = np.asarray(x[np.argwhere(x_truncated[0] == True)].flatten(), dtype=int)
 
 	
-    if np.size(cmat, axis=1) != np.size(x):
-        print("Sizes don't match")
-    print("x_vals and mean_f shape")
-    print(np.shape(x_vals))
-    print(np.shape(mean_f))
 	
     T = np.size(x)
     deconv_mean = np.zeros(T)
@@ -397,7 +386,7 @@ def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt
     state_list = []
     obs_list = []
     obs_list.append(deconv_mean)
-
+    print("Classifying")
     for s in range(0, num_states):
         emit = [emits.normal_dist_known_precision_vector(np.median(deconv_mean) + prior_sigma_mus[s] * signal_sigma,
                                                          prior_taus[s], 1 / deconv_var)]
