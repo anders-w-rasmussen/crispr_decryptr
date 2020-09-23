@@ -11,7 +11,7 @@ import os
 from multiprocessing import Process, Manager
 
 def classify_procedure(effect_file, target_file, convolution_matrix, logfilename, prior=None, out_dir=None, alpha=None, rho=None,
-                       sn=None, bed_threshold=0.8, flip_sign=None, norm=None, hampel_filter=None, parallelize=False):
+                       sn=None, bed_threshold=0.8, flip_sign=None, norm=None, hampel_filter=None, parallelize=False, slices=20):
 
     logging.basicConfig(filename=logfilename, level=logging.DEBUG)
 
@@ -224,7 +224,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
 
             for gap in [5000, 2000, 1000, 500, 100, 50, 20]:
                 terminal_idxs = np.append(target_locs[np.argwhere(diff_arr.flatten() > gap)] + buffer + 1, np.asarray([T], dtype = int))
-                if np.size(terminal_idxs) >= 60:
+                if np.size(terminal_idxs) >= slices:
                     break
 		
             for i in range(0, np.size(terminal_idxs)):
