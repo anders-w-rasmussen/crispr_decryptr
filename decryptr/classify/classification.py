@@ -62,7 +62,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         if flip_sign in ['True', 'true']:
             prior_sigma_mus *= -1
             print("decryptr: user specified that enhancers have negative regulatory effect")
-
+    global back_idx
     back_idx = np.argwhere(prior_names == 'background')
     if np.size(back_idx) == 0:
         back_idx = np.argwhere(prior_names == 'Background')
