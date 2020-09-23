@@ -166,7 +166,7 @@ class GP_Deconvolution():
         #log.info('%f%% of the elements of A K A.T are nonzeros'%(numpy.count_nonzero(A_K_x_x_A_T)/numpy.prod(A_K_x_x_A_T.shape)*100))
 
         t = time.time()
-        invA = scipy.sparse.linalg.splu(A_K_x_x_A_T)
+        invA = scipy.sparse.linalg.spilu(A_K_x_x_A_T)
         beta = invA.solve(numpy.expand_dims(y,axis=1))
         log.info('solving K beta = y took: %f'%(time.time()-t))
     
