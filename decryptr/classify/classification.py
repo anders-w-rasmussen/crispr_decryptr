@@ -396,4 +396,4 @@ def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt
 
     marg_probs, state_change = hsmm_model.give_gammas(obs_list, 0, state_change=True)
 
-    out_list.append(marg_probs)       # , state_change
+    out_list.append(np.resize(marg_probs, (-1, 1))       # , state_change
