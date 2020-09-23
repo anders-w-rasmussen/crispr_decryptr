@@ -40,6 +40,13 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
 
     logging.info("using the prior file located at " + str(prior_file))
 
+    global prior_names
+    global prior_sigma_mus
+    global prior_taus
+    global prior_Rs
+    global prior_success
+    global prior_failures
+
     prior_names = np.asarray(prior_array[:, 0], dtype=str)
     prior_sigma_mus = np.asarray(prior_array[:, 1], dtype=float)
     prior_taus = np.asarray(prior_array[:, 2], dtype=float)
@@ -367,6 +374,10 @@ def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt
 
     x_vals = np.asarray(x[np.argwhere(x_truncated[0] == True)].flatten(), dtype=int)
 
+	
+    if np.size(cmat, axis=1) != np.size(x):
+        print("Sizes don't match")
+	
     T = np.size(x)
     deconv_mean = np.zeros(T)
     deconv_mean[x_vals] += mean_f
