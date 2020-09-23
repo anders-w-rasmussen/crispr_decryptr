@@ -367,6 +367,7 @@ def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt
 
     x_vals = np.asarray(x[np.argwhere(x_truncated[0] == True)].flatten(), dtype=int)
 
+    T = np.size(x)
     deconv_mean = np.zeros(T)
     deconv_mean[x_vals] += mean_f
 
