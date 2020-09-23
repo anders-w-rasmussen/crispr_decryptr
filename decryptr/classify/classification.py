@@ -224,7 +224,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
 
             for gap in [5000, 2000, 1000, 500, 100, 50, 20]:
                 terminal_idxs = np.append(target_locs[np.argwhere(diff_arr.flatten() > gap)] + buffer + 1, np.asarray([T], dtype = int))
-                if np.size(terminal_idxs) >= 20:
+                if np.size(terminal_idxs) >= 60:
                     break
 		
             for i in range(0, np.size(terminal_idxs)):
