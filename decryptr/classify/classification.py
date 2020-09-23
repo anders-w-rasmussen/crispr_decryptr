@@ -226,6 +226,8 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                 terminal_idxs = np.append(target_locs[np.argwhere(diff_arr.flatten() > gap)] + buffer + 1, np.asarray([T], dtype = int))
 		
                 if np.size(terminal_idxs) >= slices:
+                    print(T)
+                    print(terminal_idxs)
                     break
 		
             if terminal_idxs[int(np.size(terminal_idxs.flatten())) - 1] != T:
