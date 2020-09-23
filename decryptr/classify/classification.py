@@ -377,6 +377,9 @@ def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt
 	
     if np.size(cmat, axis=1) != np.size(x):
         print("Sizes don't match")
+    print("x_vals and mean_f shape")
+    print(np.shape(x_vals))
+    print(np.shape(mean_f))
 	
     T = np.size(x)
     deconv_mean = np.zeros(T)
