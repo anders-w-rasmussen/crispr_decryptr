@@ -228,9 +228,9 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                 if np.size(terminal_idxs) >= slices:
                     break
 		
-            if terminal_idxs[int(np.size(terminal_idxs.flatten()))] != T:
+            if terminal_idxs[int(np.size(terminal_idxs.flatten())) - 1] != T:
                 print("something wrong here")
-                print(terminal_idxs[int(np.size(terminal_idxs.flatten()))])
+                print(terminal_idxs[int(np.size(terminal_idxs.flatten())) - 1])
 		
             for i in range(0, np.size(terminal_idxs)):
                 if i == 0:
