@@ -285,10 +285,6 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
             marg_probs = np.concatenate(saved_master_list, axis=1)
             deconv_mean = np.concatenate(saved_master_list_deconv)
             deconv_var = np.concatenate(saved_master_list_var)
-
-        print(np.shape(marg_probs))
-        print(np.shape(deconv_mean))
-        print(np.shape(deconv_var))
 	
         ###############
 
