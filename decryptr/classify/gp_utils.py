@@ -218,6 +218,7 @@ class GP_Deconvolution():
         try:
             beta_list = [scipy.linalg.solve_triangular(L.T,scipy.linalg.solve_triangular(L,numpy.expand_dims(y,axis=1),lower=True,check_finite=False),check_finite=False) for L,y in zip(L_list,y_list)]
         except ValueError:
+            print("solve_triangular failed. Attempting linalg.solve.")
             beta_list = [scipy.linalg.solve(L.T,scipy.linalg.solve(L,numpy.expand_dims(y,axis=1),lower=True,check_finite=False),check_finite=False) for L,y in zip(L_list,y_list)]
         log.info('solving K beta = y took: %f'%(time.time()-t))
 
@@ -231,6 +232,7 @@ class GP_Deconvolution():
         try:
             var_f_s = numpy.concatenate([numpy.diagonal(K_x_x)-numpy.diagonal(A.dot(K_x_x).T.dot(scipy.linalg.solve_triangular(L.T,scipy.linalg.solve_triangular(L,A.dot(K_x_x),lower=True,check_finite=False),check_finite=False))) for L,A,K_x_x in zip(L_list,A_list,K_list)])
         except ValueError:
+            print("solve_triangular failed. Attempting linalg.solve.")
             var_f_s = numpy.concatenate([numpy.diagonal(K_x_x)-numpy.diagonal(A.dot(K_x_x).T.dot(scipy.linalg.solve(L.T,scipy.linalg.solve(L,A.dot(K_x_x),lower=True,check_finite=False),check_finite=False))) for L,A,K_x_x in zip(L_list,A_list,K_list)])
         log.info('calculating var(f) took: %f'%(time.time()-t))
 
