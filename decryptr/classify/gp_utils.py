@@ -215,7 +215,10 @@ class GP_Deconvolution():
 
         # solve (A K_x_x A.T  + diag(\sigma^2)) \beta = m => m = (A K_x_x A.T  + diag(\sigma^2))^{-1} \beta using the Cholesky decomposition over shards
         t = time.time()
-        beta_list = [scipy.linalg.solve_triangular(L.T,scipy.linalg.solve_triangular(L,numpy.expand_dims(y,axis=1),lower=True,check_finite=False),check_finite=False) for L,y in zip(L_list,y_list)]
+        try:
+            beta_list = [scipy.linalg.solve_triangular(L.T,scipy.linalg.solve_triangular(L,numpy.expand_dims(y,axis=1),lower=True,check_finite=False),check_finite=False) for L,y in zip(L_list,y_list)]
+        except:
+            beta_list = [scipy.linalg.solve(L.T,scipy.linalg.solve(L,numpy.expand_dims(y,axis=1),lower=True,check_finite=False),check_finite=False) for L,y in zip(L_list,y_list)]
         log.info('solving K beta = y took: %f'%(time.time()-t))
 
         # K_xs_x A.T (A K_x_X A.T + diag(s2))^(-1) A y
@@ -225,7 +228,10 @@ class GP_Deconvolution():
 
         # K_xs_xs - K_xs_x A.T (A K_x_x A.T + diag(s2))^(-1) A K_x_xs
         t = time.time()
-        var_f_s = numpy.concatenate([numpy.diagonal(K_x_x)-numpy.diagonal(A.dot(K_x_x).T.dot(scipy.linalg.solve_triangular(L.T,scipy.linalg.solve_triangular(L,A.dot(K_x_x),lower=True,check_finite=False),check_finite=False))) for L,A,K_x_x in zip(L_list,A_list,K_list)])
+        try:
+            var_f_s = numpy.concatenate([numpy.diagonal(K_x_x)-numpy.diagonal(A.dot(K_x_x).T.dot(scipy.linalg.solve_triangular(L.T,scipy.linalg.solve_triangular(L,A.dot(K_x_x),lower=True,check_finite=False),check_finite=False))) for L,A,K_x_x in zip(L_list,A_list,K_list)])
+        except:
+            var_f_s = numpy.concatenate([numpy.diagonal(K_x_x)-numpy.diagonal(A.dot(K_x_x).T.dot(scipy.linalg.solve(L.T,scipy.linalg.solve(L,A.dot(K_x_x),lower=True,check_finite=False),check_finite=False))) for L,A,K_x_x in zip(L_list,A_list,K_list)])
         log.info('calculating var(f) took: %f'%(time.time()-t))
 
         #return mean_f_s,cov_f_s
