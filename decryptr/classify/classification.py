@@ -287,6 +287,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
             marg_probs = np.concatenate(saved_master_list, axis=1)
             deconv_mean = np.concatenate(saved_master_list_deconv)
             deconv_var = np.concatenate(saved_master_list_var)
+            x_concat = np.concatenate(x_list)
 	
         ###############
 
@@ -307,7 +308,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
             writer = csv.writer(f, delimiter='\t')
 
             writer.writerow(['variableStep chrom=' + chrom])
-            outbases = x + np.min(target_locs_original) - buffer
+            outbases = x_concat + np.min(target_locs_original) - buffer
             print(np.shape(outbases))
             print(np.shape(deconv_mean))
             for b in range(0, np.size(outbases, axis=0) - 1):
@@ -372,7 +373,8 @@ def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt
     
 
     x -= np.min(x)
-    target_locs -= np.min(target_locs)
+    #target_locs -= np.min(target_locs)
+    target_locs -= np.min(x)
 	
     mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal], [np.asarray(x, dtype=int)],
                                                        [target_locs], alpha_opt,
