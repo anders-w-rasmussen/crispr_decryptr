@@ -291,7 +291,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
             marg_probs = np.concatenate(saved_master_list, axis=1)
             deconv_mean = np.concatenate(saved_master_list_deconv)
             deconv_var = np.concatenate(saved_master_list_var)
-            x_concat = np.concatenate(x_list)
+            x_concat_out = np.concatenate(x_concat)
             print(np.shape(x_concat))
             print(np.shape(deconv_mean))
             print(np.shape(deconv_var))
@@ -315,7 +315,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
             writer = csv.writer(f, delimiter='\t')
 
             writer.writerow(['variableStep chrom=' + chrom])
-            outbases = x_concat + np.min(target_locs_original) - buffer
+            outbases = x_concat_out + np.min(target_locs_original) - buffer
             print(np.shape(outbases))
             print(np.shape(deconv_mean))
             for b in range(0, np.size(outbases, axis=0) - 1):
