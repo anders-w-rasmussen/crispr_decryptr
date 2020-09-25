@@ -292,6 +292,9 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
             deconv_mean = np.concatenate(saved_master_list_deconv)
             deconv_var = np.concatenate(saved_master_list_var)
             x_concat = np.concatenate(x_list)
+            print(np.shape(x_concat))
+            print(np.shape(deconv_mean))
+            print(np.shape(deconv_var))
 	
         ###############
 
