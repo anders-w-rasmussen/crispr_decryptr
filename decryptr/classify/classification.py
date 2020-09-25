@@ -268,11 +268,12 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                     master_list = manager.list()
                     master_list_deconv = manager.list()
                     master_list_var = manager.list()
+                    master_list_xconcat = manager.list()
                     processes = []
                     for k in range(len(cmat_list)):
                         p = Process(target=run_slice, args=(cmat_list[k],
                                                                convolved_signal_list[k], x_list[k],
-                                                               target_locs_list[k], alpha_opt, rho_opt, sn_opt, precision_vec_list[k], master_list, master_list_deconv, master_list_var))
+                                                               target_locs_list[k], alpha_opt, rho_opt, sn_opt, precision_vec_list[k], master_list, master_list_deconv, master_list_var, master_list_xconcat))
                         p.start()
                         processes.append(p)
 			
@@ -282,6 +283,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                     saved_master_list = [x for x in master_list]
                     saved_master_list_deconv = [x for x in master_list_deconv]
                     saved_master_list_var = [x for x in master_list_var]
+                    x_concat = [x for x in master_list_xconcat]
 
             if len(saved_master_list) != len(cmat_list):
                 print("Houston, we have a problem...") 
@@ -368,13 +370,13 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
 
         print("decryptr: wrote output files for effect " + str(effect_names[j]))
 
-def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt, prec_vec, out_list, out_list_deconv, out_list_var):
+def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt, prec_vec, out_list, out_list_deconv, out_list_var, master_list_xconcat):
 
     max_distance = 50
     gp_deconvolution = gp_utils.GP_Deconvolution(maximum_distance=max_distance)
     
-
-    x -= np.min(x)
+    x_starter = np.min(x)
+    x -= x_starter
     target_locs -= np.min(target_locs)
     #target_locs -= np.min(x)
 	
@@ -417,3 +419,4 @@ def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt
     out_list.append(marg_probs)
     out_list_deconv.append(deconv_mean)# , state_change
     out_list_var.append(deconv_var)
+    master_list_xconcat.append(x)
