@@ -168,6 +168,8 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         ###########
 
         if parallelize == False:
+            max_distance = 50
+            gp_deconvolution = gp_utils.GP_Deconvolution(maximum_distance=max_distance)
 
             mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal], [x],
                                                                [target_locs], alpha_opt,
