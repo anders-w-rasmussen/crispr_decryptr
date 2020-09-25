@@ -253,7 +253,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                 cmat_list.append(cmat[last_guide_idx:terminal_guide_idx + 1, last_idx:terminal_idx + 1])
                 convolved_signal_list.append(convolved_signal[last_guide_idx:terminal_guide_idx + 1])
                 x_list.append(x[last_idx:terminal_idx + 1])
-                target_locs_list.append(target_locs[last_guide_idx:terminal_guide_idx + 1])
+                target_locs_list.append(np.asarray(target_locs[last_guide_idx:terminal_guide_idx + 1], dtype=int))
                 precision_vec_list.append(prec_vec[last_guide_idx:terminal_guide_idx + 1])
 
 
