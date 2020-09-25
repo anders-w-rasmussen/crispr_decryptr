@@ -373,8 +373,8 @@ def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt
     
 
     x -= np.min(x)
-    #target_locs -= np.min(target_locs)
-    target_locs -= np.min(x)
+    target_locs -= np.min(target_locs)
+    #target_locs -= np.min(x)
 	
     mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal], [np.asarray(x, dtype=int)],
                                                        [target_locs], alpha_opt,
