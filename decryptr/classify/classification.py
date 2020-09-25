@@ -325,7 +325,7 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
             writer = csv.writer(f, delimiter='\t')
 
             writer.writerow(['variableStep chrom=' + chrom])
-            outbases = x + np.min(target_locs_original) - buffer
+            #outbases = x + np.min(target_locs_original) - buffer
             for b in range(0, np.size(outbases, axis=0) - 1):
                 writer.writerow([str(int(outbases[b])), str(deconv_var[b] ** (1 / 2))])
 
