@@ -281,6 +281,8 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                     saved_master_list_deconv = [x for x in master_list_deconv]
                     saved_master_list_var = [x for x in master_list_var]
 
+            if len(saved_master_list) != len(cmat_list):
+                print("Houston, we have a problem...") 
 
             marg_probs = np.concatenate(saved_master_list, axis=1)
             deconv_mean = np.concatenate(saved_master_list_deconv)
