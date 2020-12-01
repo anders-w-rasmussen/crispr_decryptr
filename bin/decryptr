@@ -146,7 +146,7 @@ class decryptr(object):
         parser.add_argument('--sigma', action='store', dest='sigma', type=float, required=False,
                             default=None, help='process noise parameter for Gaussian Process')
         parser.add_argument('--bed_threshold', action='store', dest='bed_threshold', type=float, required=False,
-                            default=0.9, help='probability threshold for .bed files')
+                            default=0.8, help='probability threshold for .bed files')
         parser.add_argument('--flip_enhancer', action='store', dest='flip_sign', type=str, required=False,
                             default='False', help='set to true if enhancers have negative effect (only if using default hyperparameters)')
         parser.add_argument('--normalize', action='store', dest='norm', type=str, required=False, default=None, help='normalize incoming signal (standard score)')
