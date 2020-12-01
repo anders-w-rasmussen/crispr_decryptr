@@ -22,13 +22,6 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         curpath = os.path.dirname(os.path.realpath(__file__))
         prior_file = curpath + '/default_prior_file.tsv'
         print("decryptr: using default hyperparameters (two-state model)")
-
-    if parallelize in ['True', 'true']:
-        parallelize = True
-        print("decryptr: using parallelized implementation")
-        print("please note this will discard distant off target binding events")
-    else:
-        parallelize = False
 	
 
     cmat = pickle.load(open(convolution_matrix, "rb"))
@@ -39,13 +32,6 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
     prior_array = np.loadtxt(prior_file, dtype=str, skiprows=1)
 
     logging.info("using the prior file located at " + str(prior_file))
-
-    global prior_names
-    global prior_sigma_mus
-    global prior_taus
-    global prior_Rs
-    global prior_success
-    global prior_failures
 
     prior_names = np.asarray(prior_array[:, 0], dtype=str)
     prior_sigma_mus = np.asarray(prior_array[:, 1], dtype=float)
@@ -62,13 +48,13 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
         if flip_sign in ['True', 'true']:
             prior_sigma_mus *= -1
             print("decryptr: user specified that enhancers have negative regulatory effect")
-    global back_idx
+    
     back_idx = np.argwhere(prior_names == 'background')
     if np.size(back_idx) == 0:
         back_idx = np.argwhere(prior_names == 'Background')
     if np.size(back_idx) != 1:
         assert np.size(back_idx) == 0, "error: there must be one state labeled background"
-    global num_states
+    
     num_states = np.size(prior_names)
 
     logging.info("loaded sparse convolution matrix")
@@ -216,88 +202,6 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
 
             spinner.stop()
 
-        if parallelize == True:
-
-            cmat_list = []
-            convolved_signal_list = []
-            x_list = []
-            target_locs_list = []
-            precision_vec_list = []
-
-            for gap in [5000, 2000, 1000, 500, 100, 50, 20]:
-                terminal_idxs = np.append(target_locs[np.argwhere(diff_arr.flatten() > gap)] + buffer + 1, np.asarray([T], dtype = int))
-		
-                if np.size(terminal_idxs) >= slices:
-                    print(T)
-                    print(terminal_idxs)
-                    break
-		
-            if terminal_idxs[int(np.size(terminal_idxs.flatten())) - 1] != T:
-                print("something wrong here")
-                print(terminal_idxs[int(np.size(terminal_idxs.flatten())) - 1])
-		
-            for i in range(0, np.size(terminal_idxs)):
-                if i == 0:
-                    last_idx = 0
-                    last_guide_idx = 0
-
-                terminal_idx = terminal_idxs[i]
-                terminal_guide_idx = np.argmax(np.argwhere((target_locs <= terminal_idx).flatten())) # +1
-
-		
-                if terminal_idx - last_idx <= 1000:
-                    if i != np.size(terminal_idxs) - 1:
-                        continue
-                if terminal_guide_idx - last_guide_idx < 20:
-                    if i != np.size(terminal_idxs) - 1:
-                        continue
-
-                cmat_list.append(cmat[last_guide_idx:terminal_guide_idx + 1, last_idx:terminal_idx + 1])
-                convolved_signal_list.append(convolved_signal[last_guide_idx:terminal_guide_idx + 1])
-                x_list.append(x[last_idx:terminal_idx + 1])
-                target_locs_list.append(target_locs[last_guide_idx:terminal_guide_idx + 1])
-                precision_vec_list.append(prec_vec[last_guide_idx:terminal_guide_idx + 1])
-
-
-                last_idx = terminal_idx + 1
-                last_guide_idx = terminal_guide_idx + 1
-            
-
-            if __name__ != "__main__":
-                with Manager() as manager:
-                    master_list = manager.list()
-                    master_list_deconv = manager.list()
-                    master_list_var = manager.list()
-                    master_list_xconcat = manager.list()
-                    processes = []
-                    for k in range(len(cmat_list)):
-                        p = Process(target=run_slice, args=(cmat_list[k],
-                                                               convolved_signal_list[k], x_list[k],
-                                                               target_locs_list[k], alpha_opt, rho_opt, sn_opt, precision_vec_list[k], master_list, master_list_deconv, master_list_var, master_list_xconcat))
-                        p.start()
-                        processes.append(p)
-			
-                    for p in processes:
-                        p.join()
-
-                    saved_master_list = [x for x in master_list]
-                    saved_master_list_deconv = [x for x in master_list_deconv]
-                    saved_master_list_var = [x for x in master_list_var]
-                    x_concat = [x for x in master_list_xconcat]
-
-            if len(saved_master_list) != len(cmat_list):
-                print("Houston, we have a problem...") 
-
-            marg_probs = np.concatenate(saved_master_list, axis=1)
-            deconv_mean = np.concatenate(saved_master_list_deconv)
-            deconv_var = np.concatenate(saved_master_list_var)
-            x_concat_out = np.concatenate(x_concat)
-            print(np.shape(x_concat))
-            print(np.shape(deconv_mean))
-            print(np.shape(deconv_var))
-	
-        ###############
-
 
         if out_dir != None:
             logging.debug("out_dir selected = " + str(out_dir))
@@ -372,54 +276,3 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
                         ending_idxs[i][0] + start_base)) + "\n")
 
         print("decryptr: wrote output files for effect " + str(effect_names[j]))
-
-def run_slice(cmat, convolved_signal, x, target_locs, alpha_opt, rho_opt, sn_opt, prec_vec, out_list, out_list_deconv, out_list_var, master_list_xconcat):
-
-    max_distance = 50
-    gp_deconvolution = gp_utils.GP_Deconvolution(maximum_distance=max_distance)
-    
-    x_starter = np.min(x)
-    x -= x_starter
-    target_locs -= np.min(target_locs)
-    #target_locs -= np.min(x)
-	
-    mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal], [np.asarray(x, dtype=int)],
-                                                       [target_locs], alpha_opt,
-                                                       rho_opt, sn_opt,
-                                                       [1 / prec_vec], full_pred=False)
-
-    x_vals = np.asarray(x[np.argwhere(x_truncated[0] == True)].flatten(), dtype=int)
-
-	
-    T = np.size(x)
-    deconv_mean = np.zeros(T)
-    deconv_mean[x_vals] += mean_f
-
-    deconv_var = np.ones(T)  # * np.mean(var_f)
-    deconv_var[x_vals] = var_f
-
-    signal_sigma = np.std(deconv_mean[x_vals])
-
-    # HsMM
-    state_list = []
-    obs_list = []
-    obs_list.append(deconv_mean)
-    for s in range(0, num_states):
-        emit = [emits.normal_dist_known_precision_vector(np.median(deconv_mean) + prior_sigma_mus[s] * signal_sigma,
-                                                         prior_taus[s], 1 / deconv_var)]
-        pseudo_dur = np.array([prior_success[s], prior_failures[s]])
-        state_list.append(states.Negative_Binomial('state_' + str(s), prior_Rs[s], pseudo_dur, emit))
-
-    pi_prior = np.ones(num_states)
-    pi_prior[back_idx] = 10
-    tmat_prior = np.ones((num_states, num_states)) - np.identity(num_states)
-    hsmm_model = model(pi_prior, tmat_prior, state_list)
-
-    hsmm_model.train(obs_list, 0, 3)
-
-    marg_probs, state_change = hsmm_model.give_gammas(obs_list, 0, state_change=True)
-
-    out_list.append(marg_probs)
-    out_list_deconv.append(deconv_mean)# , state_change
-    out_list_var.append(deconv_var)
-    master_list_xconcat.append(x)
