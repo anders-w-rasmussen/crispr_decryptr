@@ -151,7 +151,7 @@ class decryptr(object):
                             default='False', help='set to true if enhancers have negative effect (only if using default hyperparameters)')
         parser.add_argument('--normalize', action='store', dest='norm', type=str, required=False, default=None, help='normalize incoming signal (standard score)')
         parser.add_argument('--hampel_filter', action='store', dest='hampel', type=str, required=False, default=None, help='remove outliers with Hampel filter')
-        parser.add_argument('--parallelize', help='if True, implements the classify algorithm in a parallelized manner losing some off-target information', required=False,
+        parser.add_argument('--parallelize', help='if True, implements the classify algorithm in a parallelized manner losing some off-target information (Beta)', required=False,
                             default='False', action='store',
                             type=str, dest='parallelize')
         parser.add_argument('--slices', action='store', dest='slices', type=int, required=False,
