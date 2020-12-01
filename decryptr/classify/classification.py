@@ -153,54 +153,54 @@ def classify_procedure(effect_file, target_file, convolution_matrix, logfilename
 
         ###########
 
-        if parallelize == False:
-            max_distance = 50
-            gp_deconvolution = gp_utils.GP_Deconvolution(maximum_distance=max_distance)
+        
+        max_distance = 50
+        gp_deconvolution = gp_utils.GP_Deconvolution(maximum_distance=max_distance)
 
-            mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal], [x],
-                                                               [target_locs], alpha_opt,
-                                                               rho_opt, sn_opt,
-                                                               [1 / prec_vec], full_pred=False)
+        mean_f, var_f, x_truncated = gp_deconvolution.pred([cmat], [convolved_signal], [x],
+                                                           [target_locs], alpha_opt,
+                                                           rho_opt, sn_opt,
+                                                           [1 / prec_vec], full_pred=False)
 
-            x_vals = np.asarray(x[np.argwhere(x_truncated[0] == True)].flatten(), dtype=int)
+        x_vals = np.asarray(x[np.argwhere(x_truncated[0] == True)].flatten(), dtype=int)
 
-            deconv_mean = np.zeros(T)
-            deconv_mean[x_vals] += mean_f
+        deconv_mean = np.zeros(T)
+        deconv_mean[x_vals] += mean_f
 
-            deconv_var = np.ones(T) #* np.mean(var_f)
-            deconv_var[x_vals] = var_f
+        deconv_var = np.ones(T) #* np.mean(var_f)
+        deconv_var[x_vals] = var_f
 
-            signal_sigma = np.std(deconv_mean[x_vals])
+        signal_sigma = np.std(deconv_mean[x_vals])
 
-            logging.info("Finished deconvolving effect")
+        logging.info("Finished deconvolving effect")
 
-            # HsMM
-            state_list = []
-            obs_list = []
-            obs_list.append(deconv_mean)
+        # HsMM
+        state_list = []
+        obs_list = []
+        obs_list.append(deconv_mean)
 
-            for s in range(0, num_states):
-                emit = [emits.normal_dist_known_precision_vector(np.median(deconv_mean) + prior_sigma_mus[s] * signal_sigma,
+        for s in range(0, num_states):
+            emit = [emits.normal_dist_known_precision_vector(np.median(deconv_mean) + prior_sigma_mus[s] * signal_sigma,
                                                                  prior_taus[s], 1 / deconv_var)]
-                pseudo_dur = np.array([prior_success[s], prior_failures[s]])
-                state_list.append(states.Negative_Binomial('state_' + str(s), prior_Rs[s], pseudo_dur, emit))
+            pseudo_dur = np.array([prior_success[s], prior_failures[s]])
+            state_list.append(states.Negative_Binomial('state_' + str(s), prior_Rs[s], pseudo_dur, emit))
 
-            pi_prior = np.ones(num_states)
-            pi_prior[back_idx] = 10
-            tmat_prior = np.ones((num_states, num_states)) - np.identity(num_states)
-            hsmm_model = model(pi_prior, tmat_prior, state_list)
+        pi_prior = np.ones(num_states)
+        pi_prior[back_idx] = 10
+        tmat_prior = np.ones((num_states, num_states)) - np.identity(num_states)
+        hsmm_model = model(pi_prior, tmat_prior, state_list)
 
-            print("decryptr: training Hidden semi-Markov Model on deconvolved effect")
+        print("decryptr: training Hidden semi-Markov Model on deconvolved effect")
 
-            hsmm_model.train(obs_list, 0, 3)
+        hsmm_model.train(obs_list, 0, 3)
 
-            spinner = Halo(text='decryptr: calculating marginal probabilities of latent states', spinner='dots',
-                           color='white', placement='right')
-            spinner.start()
+        spinner = Halo(text='decryptr: calculating marginal probabilities of latent states', spinner='dots',
+                       color='white', placement='right')
+        spinner.start()
 
-            marg_probs, state_change = hsmm_model.give_gammas(obs_list, 0, state_change=True)
+        marg_probs, state_change = hsmm_model.give_gammas(obs_list, 0, state_change=True)
 
-            spinner.stop()
+        spinner.stop()
 
 
         if out_dir != None:
