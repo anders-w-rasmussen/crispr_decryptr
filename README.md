@@ -25,6 +25,9 @@ email: arasmussen@flatironinstitute.org
 pip install git+https://git@github.com/anders-w-rasmussen/crispr_decryptr
 ```
 
+Installation time will vary depending on what requirements must be installed, but should be on the order of minutes. 
+
+
 # Requirements
 
 We recommend running the method on hardware with at least 10GB of memory. As the method is highly parellelized, running on a multi-core CPU or cluster is ideal for large datasets. We tested the method on a MacBook Pro (Mojave) with 3.1 GHz Intel Core i7 + 16GB of RAM and were able to run published datasets within hours.
@@ -51,7 +54,7 @@ Thirdly, the *classify* command takes the results of the first two commands to m
 
 # Getting Started 
 
-To get introduced to CRISPR-Decryptr, we can start by running the code on some simple simulated data. You don't need any experience in programming languages, just a terminal window and optionally Excel to get your data prepared in some simple .tsv files. 
+To get introduced to CRISPR-Decryptr, we can start by running the code on some simple simulated data. You don't need any experience in programming languages, just a terminal window and optionally Excel to get your data prepared in some simple .tsv files. Running this demo data should take on the order of tens of minutes.
 
 Consider a theoretical screen for identifying regulatory elements that confer drug resistance. Our experimental design has two replicates and the following three conditions: an early condition, a control condition, and a treatment condition. 
 
