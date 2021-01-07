@@ -23,8 +23,6 @@ data {
   int<lower=1,upper=num_params> num_params_per_sample[N_samples];
   int<lower=1,upper=num_params> param_indices[sum(num_params_per_sample)];
   int<lower=0,upper=1> use_lambda;
-  # TODO: if use_lambda == 0, we could provide empty arrays
-  # should be possible with the next version (see https://github.com/stan-dev/cmdstanpy/pull/159)
   vector[sum(num_params_per_sample)] lambda_mu;
   vector<lower=0>[sum(num_params_per_sample)] lambda_std;
 }
