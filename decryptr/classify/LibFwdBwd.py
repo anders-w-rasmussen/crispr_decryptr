@@ -6,7 +6,8 @@ from numpy.ctypeslib import ndpointer
 curpath = os.path.dirname(os.path.realpath(__file__))
 
 if os.path.exists(curpath + "/libfwdbwdcpp.so"):
-    print("C++ forward-backward algorithm is compiled: " + str(curpath) + "/libfwdbwdcpp.so")
+    pass
+    #print("C++ forward-backward algorithm is compiled: " + str(curpath) + "/libfwdbwdcpp.so")
 else:
     print("C++ forward-backward algorithm not found at: " + str(curpath) + "/libfwdbwdcpp.so")
     print("Installing and compiling the Forward-Backward Algorithm")
