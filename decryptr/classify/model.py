@@ -60,7 +60,7 @@ class model_1:
         for i in range(0, np.size(self.tmat_prior, axis=0)):
             self.tmat[i, :] /= np.sum(self.tmat[i, :])
 
-        config_handler.set_global(length=40, spinner='dots_reverse')
+        #config_handler.set_global(length=40, spinner='dots_reverse')
 
         # Begin iterations
 
