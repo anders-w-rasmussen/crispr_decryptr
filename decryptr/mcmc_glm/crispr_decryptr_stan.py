@@ -11,7 +11,7 @@ from cmdstanpy import cmdstan_path, CmdStanModel, install_cmdstan
 from decryptr.mcmc_glm.filter_guides import filter_guides
 import shutil
 
-
+logging.getLogger("cmdstanpy").disabled = True
 def analyze(count_filename, design_matrix_filename, replicate_information_filename,
             sample_file_prefix, n_chains, n_samples, batch_size,
             n_batches, output_filename, logfilename, outfile_devs, species, target_file, spacers_file, lambda_filename=None):
