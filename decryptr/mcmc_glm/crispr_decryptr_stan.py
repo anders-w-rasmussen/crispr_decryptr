@@ -398,7 +398,7 @@ def helper(data, crispr_decryptr_model, n_chains, n_samples, output_prefix, batc
     for filename in crispr_decryptr_fit.runset._csv_files:
             basename = os.path.basename(filename)
             shutil.move(filename,os.path.join('./','%s-%d-%s.csv'%(output_prefix,batch_idx,basename.split('-')[-2])))
-    logging.info('saved sample files: %s'%(', '.join(sample_filenames)))        
+    #logging.info('saved sample files: %s'%(', '.join(sample_filenames)))        
             
   
 
@@ -526,4 +526,4 @@ def save_output(moments, data_filename, design_matrix_filename, output_filename,
 
     if outfile_devs != False:
         data_devs.to_csv(outfile_devs, sep='\t', header=True, index=False)
-        logging.info('saved standard deviation moment file: %s' % (outfile_devs))
+        #logging.info('saved standard deviation moment file: %s' % (outfile_devs))
